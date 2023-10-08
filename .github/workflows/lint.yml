@@ -1,0 +1,27 @@
+name: Lint
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        with:
+          bundler-cache: true
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.1.0'
+          cache: yarn
+      - name: Install npm packages
+        run: yarn install
+      - name: rubocop
+        run: bundle exec rubocop
+      - name: slim-lint
+        run: bundle exec slim-lint app/views
