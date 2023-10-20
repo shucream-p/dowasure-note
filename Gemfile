@@ -74,5 +74,6 @@ group :development do
   # gem "spring"
 end
 
+gem 'acts-as-taggable-on'
 gem 'devise'
 gem 'slim-rails'
