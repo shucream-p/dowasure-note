@@ -1,0 +1,22 @@
+= form_with(model: memo) do |form|
+  - if memo.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(memo.errors.count, 'error')} prohibited this memo from being saved:"
+      ul
+        - memo.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :name, '名前'
+    = form.text_field :name, class: 'border rounded', style: 'display: block'
+
+  div
+    = form.label :tag_list, 'キーワードタグ'
+    = form.text_area :tag_list, class: 'border rounded', style: 'display: block'
+
+  div
+    = form.label :content, '内容'
+    = form.text_area :content, class: 'border rounded', style: 'display: block'
+
+  div
+    = form.submit '登録', class: 'text-gray-800 font-semibold py-2 px-4 border rounded'
