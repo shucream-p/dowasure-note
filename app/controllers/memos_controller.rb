@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class MemosController < ApplicationController
-  def index; end
+  def index
+    @memos = Memo.all
+  end
 
   def new
     @memo = Memo.new

@@ -1,6 +1,13 @@
-p style='color: green' = notice
+.container.mx-auto.px-4.md:w-4/12
+  p style='color: green' = notice
 
-h1.font-bold.text-2xl
-  | メモ一覧
+  h1.font-bold.text-2xl.pt-6
+    | メモ一覧
 
-= link_to '+', new_memo_path, class: 'text-gray-800 font-semibold py-2 px-4 border rounded'
+  .pt-6.text-right
+    = link_to '+', new_memo_path, class: 'text-gray-800 font-semibold py-2 px-4 border rounded'
+
+  #memos.pt-6
+    - @memos.each do |memo|
+        li.list-none.text-lg.font-bold
+          = memo.name
