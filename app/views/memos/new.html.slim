@@ -1,9 +1,8 @@
-h1.font-bold.text-2xl
-  | メモ登録
+.container.mx-auto.px-4.md:w-4/12
+  h1.font-bold.text-2xl.mt-6
+    | メモ登録
 
-= render 'form', { memo: @memo, action: '登録' }
+  = render 'form', { memo: @memo, action: '登録' }
 
-br
-
-div
-  = link_to 'キャンセル', root_path
+  .text-center.mt-4.text-xs
+    = link_to 'キャンセル', root_path
