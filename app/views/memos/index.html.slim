@@ -14,3 +14,4 @@
             = memo.name
           - if memo.content.present?
             = link_to '詳細', memo, class: 'text-blue-600 ml-2'
+          = link_to '編集', edit_memo_path(memo), class: 'text-blue-600 ml-2'
