@@ -9,5 +9,8 @@
 
   #memos.pt-6
     - @memos.each do |memo|
-        li.list-none.text-lg.font-bold
-          = memo.name
+        li.list-none
+          strong.text-lg
+            = memo.name
+          - if memo.content.present?
+            = link_to '詳細', memo, class: 'text-blue-600 ml-2'
