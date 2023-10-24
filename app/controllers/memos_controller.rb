@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MemosController < ApplicationController
-  before_action :set_memo, only: %i[show edit update]
+  before_action :set_memo, only: %i[show edit update destroy]
 
   def index
     @memos = Memo.all
@@ -31,6 +31,12 @@ class MemosController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @memo.destroy
+
+    redirect_to root_url, notice: 'Memo was successfully destroyed.'
   end
 
   private
