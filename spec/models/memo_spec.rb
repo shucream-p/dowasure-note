@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Memo, type: :model do
   describe 'ユーザー単位では重複した名前は許可しないこと' do
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { create(:user) }
 
     context '同じユーザーの場合' do
       it '登録失敗すること' do
@@ -19,12 +19,12 @@ RSpec.describe Memo, type: :model do
     context '異なるユーザーの場合' do
       it '登録成功すること' do
         Memo.create(
-          user: FactoryBot.create(:user, email: 'testuser1@example.com'),
+          user: create(:user, email: 'testuser1@example.com'),
           name: 'ど忘れしやすい名前'
         )
 
         memo = Memo.new(
-          user: FactoryBot.create(:user, email: 'testuser2@example.com'),
+          user: create(:user, email: 'testuser2@example.com'),
           name: 'ど忘れしやすい名前'
         )
         expect(memo).to be_valid
