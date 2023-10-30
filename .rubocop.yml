@@ -18,3 +18,7 @@ Style/Documentation:
 
 Rails/I18nLocaleTexts:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
