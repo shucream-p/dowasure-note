@@ -75,6 +75,11 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end
+
 gem 'acts-as-taggable-on'
 gem 'devise'
 gem 'slim-rails'
