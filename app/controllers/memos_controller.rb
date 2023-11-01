@@ -39,6 +39,16 @@ class MemosController < ApplicationController
     redirect_to root_url, notice: 'Memo was successfully destroyed.'
   end
 
+  def search
+    @memos = case params[:search_option]
+             when 'name'
+               current_user.memos.where('name LIKE ?', "%#{params[:q]}%")
+             when 'tag'
+               words = params[:q].split(/[\p{blank}\s]+/).select(&:present?)
+               current_user.memos.tagged_with(words)
+             end
+  end
+
   private
 
   def set_memo

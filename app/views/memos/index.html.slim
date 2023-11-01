@@ -1,6 +1,15 @@
 .container.mx-auto.px-4.md:w-4/12
   p style='color: green' = notice
 
+  = form_with url: search_memos_path, method: :get, class: 'mt-6' do |f|
+    = f.text_field :q, class: 'border rounded w-full px-2'
+    = f.submit '検索'
+    .block.mt-2
+      = f.radio_button :search_option, :tag, checked: true
+      = f.label :search_option_tag, 'キーワードタグ', class: 'mx-1'
+      = f.radio_button :search_option, :name
+      = f.label :search_option_name, '名前', class: 'ml-1'
+
   h1.font-bold.text-2xl.mt-6
     | メモ一覧
 
