@@ -25,3 +25,7 @@ jobs:
         run: bundle exec rubocop
       - name: slim-lint
         run: bundle exec slim-lint app/views
+      - name: eslint
+        run: yarn eslint ./app/javascript
+      - name: prettier
+        run: yarn prettier --check ./app/javascript
