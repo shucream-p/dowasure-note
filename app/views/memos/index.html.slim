@@ -1,5 +1,6 @@
 .container.mx-auto.px-4.md:w-4/12
-  p style='color: green' = notice
+  #flash
+    = render 'flash'
 
   = form_with url: search_memos_path,
               method: :get,

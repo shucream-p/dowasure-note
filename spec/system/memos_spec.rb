@@ -41,7 +41,7 @@ RSpec.describe 'Memos', type: :system do
 
     visit root_path
     expect(page).to have_content 'ど忘れしやすい名前'
-    click_button '削除'
+    click_link '削除'
     expect(page.accept_confirm).to eq '本当に削除してよろしいですか？'
     expect(page).to have_content 'Memo was successfully destroyed.'
     expect(page).to have_no_content 'ど忘れしやすい名前'

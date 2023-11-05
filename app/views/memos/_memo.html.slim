@@ -1,7 +1,8 @@
-li.list-none.flex.items-center
-  strong.text-lg
-    = memo.name
-  - if memo.content.present?
-    = link_to '詳細', memo, data: { turbo: 'false' }, class: 'text-blue-600 ml-2'
-  = link_to '編集', edit_memo_path(memo), data: { turbo: 'false' }, class: 'text-blue-600 ml-2'
-  = button_to '削除', memo, method: :delete, data: { turbo_confirm: '本当に削除してよろしいですか？' }, class: 'text-blue-600 ml-2'
+= turbo_frame_tag memo do
+  li.list-none.flex.items-center
+    strong.text-lg
+      = memo.name
+    - if memo.content.present?
+      = link_to '詳細', memo, data: { turbo: 'false' }, class: 'text-blue-600 ml-2'
+    = link_to '編集', edit_memo_path(memo), data: { turbo: 'false' }, class: 'text-blue-600 ml-2'
+    = link_to '削除', memo, data: { turbo_method: :delete, turbo_confirm: '本当に削除してよろしいですか？' }, class: 'text-blue-600 ml-2'
