@@ -1,9 +1,11 @@
 .container.mx-auto.px-4.md:w-4/12
   p style='color: green' = notice
 
-  = form_with url: search_memos_path, method: :get, class: 'mt-6' do |f|
+  = form_with url: search_memos_path,
+              method: :get,
+              class: 'mt-6',
+              html: { data: { turbo_frame: 'memos', controller: 'search-form', action: 'input->search-form#submit' } } do |f|
     = f.text_field :q, class: 'border rounded w-full px-2'
-    = f.submit '検索'
     .block.mt-2
       = f.radio_button :search_option, :tag, checked: true
       = f.label :search_option_tag, 'キーワードタグ', class: 'mx-1'
@@ -16,8 +18,9 @@
   .mt-6.text-right
     = link_to '+', new_memo_path, class: 'text-gray-800 font-semibold py-2 px-4 border rounded'
 
-  #memos.mt-6
-    - @memos.each do |memo|
+  .mt-6
+    = turbo_frame_tag 'memos' do
+      - @memos.each do |memo|
         li.list-none.flex.items-center
           strong.text-lg
             = memo.name

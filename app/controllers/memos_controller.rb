@@ -40,12 +40,16 @@ class MemosController < ApplicationController
   end
 
   def search
-    @memos = case params[:search_option]
-             when 'name'
-               current_user.memos.where('name LIKE ?', "%#{params[:q]}%")
-             when 'tag'
-               words = params[:q].split(/[\p{blank}\s]+/).select(&:present?)
-               current_user.memos.tagged_with(words)
+    @memos = if params[:q].present?
+               case params[:search_option]
+               when 'name'
+                 current_user.memos.where('name LIKE ?', "%#{params[:q]}%")
+               when 'tag'
+                 words = params[:q].split(/[\p{blank}\s]+/).select(&:present?)
+                 current_user.memos.tagged_with(words)
+               end
+             else
+               current_user.memos.all
              end
   end
 
