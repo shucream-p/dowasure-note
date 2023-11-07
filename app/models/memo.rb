@@ -6,4 +6,22 @@ class Memo < ApplicationRecord
   acts_as_taggable
 
   validates :name, presence: true, uniqueness: { scope: :user_id }
+
+  class << self
+    def search(query, option)
+      case option
+      when 'name'
+        where('name LIKE ?', "%#{query}%")
+      when 'tag'
+        tag_search(query)
+      end
+    end
+
+    private
+
+    def tag_search(query)
+      words = query.split(/[\p{blank}\s]+/).select(&:present?)
+      tagged_with(words)
+    end
+  end
 end
