@@ -11,8 +11,8 @@ RSpec.describe 'Memos', type: :system do
 
   describe 'メモの表示' do
     before do
-      Memo.create(user:, name: 'ど忘れしやすい名前', tag_list: %w[タグ1 タグ2])
-      Memo.create(user:, name: '覚えておきたい名前', tag_list: ['タグ1'])
+      create(:memo, name: 'ど忘れしやすい名前', tag_list: %w[タグ1 タグ2], user:)
+      create(:memo, name: '覚えておきたい名前', tag_list: ['タグ1'], user:)
       visit root_path
     end
 
@@ -73,7 +73,7 @@ RSpec.describe 'Memos', type: :system do
   end
 
   it 'メモを編集できること' do
-    Memo.create(user:, name: 'ど忘れしやすい名前')
+    create(:memo, name: 'ど忘れしやすい名前', user:)
 
     visit root_path
     click_link '編集'
@@ -85,7 +85,7 @@ RSpec.describe 'Memos', type: :system do
   end
 
   it 'メモを削除できること' do
-    Memo.create(user:, name: 'ど忘れしやすい名前')
+    create(:memo, name: 'ど忘れしやすい名前', user:)
 
     visit root_path
     expect(page).to have_content 'ど忘れしやすい名前'
