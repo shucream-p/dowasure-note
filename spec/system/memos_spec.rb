@@ -9,6 +9,54 @@ RSpec.describe 'Memos', type: :system do
     sign_in user
   end
 
+  describe 'メモの表示' do
+    before do
+      create(:memo, name: 'ど忘れしやすい名前', tag_list: %w[タグ1 タグ2], user:)
+      create(:memo, name: '覚えておきたい名前', tag_list: ['タグ1'], user:)
+      visit root_path
+    end
+
+    it '全てのメモが表示されること' do
+      expect(page).to have_content 'ど忘れしやすい名前'
+      expect(page).to have_content '覚えておきたい名前'
+    end
+
+    describe '検索時の表示' do
+      context 'キーワードタグで検索した場合' do
+        it '「ど忘れしやすい名前」のみ表示されること' do
+          expect(page).to have_checked_field('キーワードタグ')
+          fill_in 'q', with: 'タグ1 タグ2'
+          wait_for_turbo_frame
+          expect(page).to have_content 'ど忘れしやすい名前'
+          expect(page).to have_no_content '覚えておきたい名前'
+        end
+      end
+
+      context '名前で検索した場合' do
+        it '「覚えておきたい名前」のみ表示されること' do
+          choose '名前'
+          fill_in 'q', with: '覚えて'
+          wait_for_turbo_frame
+          expect(page).to have_content '覚えておきたい名前'
+          expect(page).to have_no_content 'ど忘れしやすい名前'
+        end
+      end
+
+      context '検索ワードを削除した場合' do
+        it '全てのメモが表示されること' do
+          fill_in 'q', with: 'タグ1 タグ2'
+          wait_for_turbo_frame
+          expect(page).to have_content 'ど忘れしやすい名前'
+          expect(page).to have_no_content '覚えておきたい名前'
+          find('input[name="q"]').send_keys([:backspace] * 7)
+          wait_for_turbo_frame
+          expect(page).to have_content 'ど忘れしやすい名前'
+          expect(page).to have_content '覚えておきたい名前'
+        end
+      end
+    end
+  end
+
   it 'メモを登録できること' do
     visit root_path
     click_link '+'
@@ -25,7 +73,7 @@ RSpec.describe 'Memos', type: :system do
   end
 
   it 'メモを編集できること' do
-    Memo.create(user:, name: 'ど忘れしやすい名前')
+    create(:memo, name: 'ど忘れしやすい名前', user:)
 
     visit root_path
     click_link '編集'
@@ -37,11 +85,11 @@ RSpec.describe 'Memos', type: :system do
   end
 
   it 'メモを削除できること' do
-    Memo.create(user:, name: 'ど忘れしやすい名前')
+    create(:memo, name: 'ど忘れしやすい名前', user:)
 
     visit root_path
     expect(page).to have_content 'ど忘れしやすい名前'
-    click_button '削除'
+    click_link '削除'
     expect(page.accept_confirm).to eq '本当に削除してよろしいですか？'
     expect(page).to have_content 'Memo was successfully destroyed.'
     expect(page).to have_no_content 'ど忘れしやすい名前'

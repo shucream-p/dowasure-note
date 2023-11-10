@@ -36,7 +36,12 @@ class MemosController < ApplicationController
   def destroy
     @memo.destroy
 
-    redirect_to root_url, notice: 'Memo was successfully destroyed.'
+    flash.now.notice = 'Memo was successfully destroyed.'
+  end
+
+  def search
+    memos = current_user.memos
+    @memos = params[:q].present? ? memos.search(params[:q], params[:search_option]) : memos.all
   end
 
   private
