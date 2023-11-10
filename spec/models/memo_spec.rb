@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Memo, type: :model do
-  describe 'ユーザー単位では重複した名前は許可しないこと' do
-    let(:user) { create(:user) }
+  let(:user) { create(:user) }
 
+  describe 'ユーザー単位では重複した名前は許可しないこと' do
     context '同じユーザーの場合' do
       it '登録失敗すること' do
         Memo.create(user:, name: 'ど忘れしやすい名前')
@@ -28,6 +28,24 @@ RSpec.describe Memo, type: :model do
           name: 'ど忘れしやすい名前'
         )
         expect(memo).to be_valid
+      end
+    end
+  end
+
+  describe '.search' do
+    before do
+      @memo = Memo.create(user:, name: 'ど忘れしやすい名前', tag_list: %w[タグ1 タグ2])
+    end
+
+    context '引数にタグを渡した場合' do
+      it '該当するメモが含まれること' do
+        expect(Memo.search('タグ1 タグ2', 'tag')).to include @memo
+      end
+    end
+
+    context '引数に名前を渡した場合' do
+      it '該当するメモが含まれること' do
+        expect(Memo.search('ど忘れ', 'name')).to include @memo
       end
     end
   end
