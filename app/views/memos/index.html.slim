@@ -21,5 +21,6 @@
 
   .mt-6
     = turbo_frame_tag 'memos' do
-      = render @memos
-      = paginate @memos
+      = turbo_frame_tag "memos-page-#{@memos.current_page}" do
+        = render @memos
+        = turbo_frame_tag "memos-page-#{@memos.next_page}", loading: :lazy, src: path_to_next_page(@memos)
