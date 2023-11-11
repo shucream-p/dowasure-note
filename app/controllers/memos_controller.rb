@@ -47,6 +47,8 @@ class MemosController < ApplicationController
              else
                memos.page(params[:page])
              end
+
+    @memos.each(&:increase_search_count) if params[:q].present?
   end
 
   private

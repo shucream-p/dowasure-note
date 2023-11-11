@@ -24,4 +24,9 @@ class Memo < ApplicationRecord
       tagged_with(words)
     end
   end
+
+  def increase_search_count
+    increment(:search_count, 1)
+    save(touch: false)
+  end
 end
