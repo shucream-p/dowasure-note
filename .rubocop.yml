@@ -22,3 +22,6 @@ Rails/I18nLocaleTexts:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+
+Metrics/AbcSize:
+  Max: 30
