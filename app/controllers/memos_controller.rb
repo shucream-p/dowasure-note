@@ -4,7 +4,7 @@ class MemosController < ApplicationController
   before_action :set_memo, only: %i[show edit update destroy]
 
   def index
-    @memos = Memo.page(params[:page])
+    @memos = params[:latest] ? Memo.latest.page(params[:page]) : Memo.forgetful.page(params[:page])
   end
 
   def show; end
@@ -47,6 +47,8 @@ class MemosController < ApplicationController
              else
                memos.page(params[:page])
              end
+
+    @memos.each(&:increase_search_count) if params[:q].present?
   end
 
   private

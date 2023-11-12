@@ -7,6 +7,9 @@ class Memo < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { scope: :user_id }
 
+  scope :latest, -> { order(updated_at: :desc) }
+  scope :forgetful, -> { order(search_count: :desc, updated_at: :desc) }
+
   class << self
     def search(query, option)
       case option
@@ -23,5 +26,10 @@ class Memo < ApplicationRecord
       words = query.split(/[\p{blank}\s]+/).select(&:present?)
       tagged_with(words)
     end
+  end
+
+  def increase_search_count
+    increment(:search_count, 1)
+    save(touch: false)
   end
 end

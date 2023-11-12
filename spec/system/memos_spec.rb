@@ -11,7 +11,7 @@ RSpec.describe 'Memos', type: :system do
 
   describe 'メモの表示' do
     before do
-      create(:memo, name: 'ど忘れしやすい名前', tag_list: %w[タグ1 タグ2], user:)
+      create(:memo, name: 'ど忘れしやすい名前', tag_list: %w[タグ1 タグ2], search_count: 1, user:)
       create(:memo, name: '覚えておきたい名前', tag_list: ['タグ1'], user:)
       visit root_path
     end
@@ -53,6 +53,27 @@ RSpec.describe 'Memos', type: :system do
           expect(page).to have_content 'ど忘れしやすい名前'
           expect(page).to have_content '覚えておきたい名前'
         end
+      end
+    end
+
+    describe 'ソート機能' do
+      it '検索した後順番が入れ替わること' do
+        expect(first('strong').text).to eq 'ど忘れしやすい名前'
+        choose '名前'
+        fill_in 'q', with: '覚えて'
+        wait_for_turbo_frame
+        visit root_path
+        expect(first('strong').text).to eq '覚えておきたい名前'
+      end
+
+      it 'ソートのリンクが機能すること' do
+        expect(first('strong').text).to eq 'ど忘れしやすい名前'
+        click_link('更新順')
+        wait_for_turbo
+        expect(first('strong').text).to eq '覚えておきたい名前'
+        click_link('ど忘れが多い順')
+        wait_for_turbo
+        expect(first('strong').text).to eq 'ど忘れしやすい名前'
       end
     end
   end
