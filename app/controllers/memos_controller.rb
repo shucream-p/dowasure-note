@@ -4,13 +4,7 @@ class MemosController < ApplicationController
   before_action :set_memo, only: %i[show edit update destroy]
 
   def index
-    @memos = if params[:sort] == 'latest'
-               Memo.order(updated_at: :desc)
-                   .page(params[:page])
-             else
-               Memo.order(search_count: :desc, updated_at: :desc)
-                   .page(params[:page])
-             end
+    @memos = params[:sort] == 'latest' ? Memo.latest.page(params[:page]) : Memo.forgetful.page(params[:page])
   end
 
   def show; end

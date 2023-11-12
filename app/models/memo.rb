@@ -7,6 +7,9 @@ class Memo < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { scope: :user_id }
 
+  scope :latest, -> { order(updated_at: :desc) }
+  scope :forgetful, -> { order(search_count: :desc, updated_at: :desc) }
+
   class << self
     def search(query, option)
       case option
