@@ -9,3 +9,6 @@ application.register("hello", HelloController);
 
 import SearchFormController from "./search_form_controller";
 application.register("search-form", SearchFormController);
+
+import TagifyController from "./tagify_controller";
+application.register("tagify", TagifyController);

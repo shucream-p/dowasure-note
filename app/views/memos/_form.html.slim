@@ -11,10 +11,14 @@
     .mt-2
       = form.text_field :name, class: 'border rounded w-full py-2 px-2', style: 'display: block'
 
-  .mt-2
+  .mt-2 data-controller="tagify"
     = form.label :tag_list, 'キーワードタグ'
     .mt-2
-      = form.text_area :tag_list, value: memo.tag_list.join(','), class: 'border rounded resize-none w-full py-2 px-2', style: 'display: block'
+      = form.text_area :tag_list,
+                       value: memo.tag_list.join(','),
+                       class: 'border rounded resize-none w-full py-2 px-2',
+                       style: 'display: block',
+                       data: { tagify_target: 'tagInput' }
 
   .mt-2
     = form.label :content, '内容'
