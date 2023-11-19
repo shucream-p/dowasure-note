@@ -81,15 +81,20 @@ RSpec.describe 'Memos', type: :system do
   it 'メモを登録できること' do
     visit root_path
     click_link '+'
-
     fill_in 'memo[name]', with: 'ど忘れしやすい名前'
-    fill_in 'memo[tag_list]', with: 'タグ1,タグ2'
+    tag_input = find '.tagify__input'
+    tag_input.set 'タグ1'
+    tag_input.send_keys :enter
+
+    # タグが保存用のフォーマットに変換され、セットされているかの確認
+    expect(page).to have_field 'memo[tag_list]', with: 'タグ1', visible: false
+
     fill_in 'memo[content]', with: 'ど忘れしやすい名前です'
     click_button '登録'
     expect(page).to have_content 'Memo was successfully created.'
     expect(page).to have_content 'ど忘れしやすい名前'
-
-    click_link '詳細'
+    click_link '編集'
+    expect(page).to have_content 'タグ1'
     expect(page).to have_content 'ど忘れしやすい名前です'
   end
 
