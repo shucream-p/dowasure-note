@@ -120,4 +120,12 @@ RSpec.describe 'Memos', type: :system do
     expect(page).to have_content 'Memo was successfully destroyed.'
     expect(page).to have_no_content 'ど忘れしやすい名前'
   end
+
+  it 'メモの内容を表示できること' do
+    create(:memo, content: 'ど忘れしやすい名前です', user:)
+
+    visit root_path
+    click_link '詳細'
+    expect(page).to have_content 'ど忘れしやすい名前です'
+  end
 end

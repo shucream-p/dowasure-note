@@ -27,3 +27,8 @@
       = turbo_frame_tag "memos-page-#{@memos.current_page}" do
         = render @memos
         = turbo_frame_tag "memos-page-#{@memos.next_page}", loading: :lazy, src: path_to_next_page(@memos)
+
+  div data-controller="modal"
+    .hidden.fixed.w-screen.h-screen.top-0.left-0.bg-gray-700/50 data-modal-target="modal" data-action="turbo:frame-load->modal#open click->modal#close"
+      .absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-1/2.bg-white.p-10.w-10/12.sm:w-fit data-action="click->modal#stay"
+        = turbo_frame_tag 'memo_content'
