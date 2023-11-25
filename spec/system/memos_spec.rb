@@ -125,7 +125,8 @@ RSpec.describe 'Memos', type: :system do
     create(:memo, content: 'ど忘れしやすい名前です', user:)
 
     visit root_path
-    click_link '詳細'
+    comment_icon = find '.svg-inline--fa.fa-comment-dots'
+    comment_icon.click
     expect(page).to have_content 'ど忘れしやすい名前です'
   end
 end
