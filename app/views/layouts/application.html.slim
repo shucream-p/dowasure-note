@@ -9,4 +9,7 @@ html
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
   body
+    header.p-3.border-b
+      .text-right
+        = button_to 'ログアウト', destroy_user_session_path, method: :delete
     = yield
