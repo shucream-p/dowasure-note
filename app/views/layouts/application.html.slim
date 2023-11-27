@@ -16,5 +16,6 @@ html
           i.fa-solid.fa-user.fa-lg.pt-4.pr-3 data-action="click->modal#open"
           .hidden.fixed.w-screen.h-screen.top-0.left-0.bg-gray-700/50 data-modal-target="modal" data-action="click->modal#close"
             .absolute.top-9.right-0.bg-white.p-3
+              = link_to 'アカウント設定', edit_user_registration_path
               = button_to 'ログアウト', destroy_user_session_path, method: :delete
     = yield
