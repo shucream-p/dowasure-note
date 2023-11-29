@@ -5,4 +5,7 @@ Rails.application.routes.draw do
     get 'search', on: :collection
   end
   devise_for :users
+  namespace :api do
+    get 'tags/search'
+  end
 end

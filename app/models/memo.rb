@@ -4,6 +4,7 @@ class Memo < ApplicationRecord
   belongs_to :user
 
   acts_as_taggable
+  acts_as_taggable_tenant :user_id
 
   validates :name, presence: true, uniqueness: { scope: :user_id }
 
