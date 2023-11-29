@@ -21,6 +21,14 @@ RSpec.describe 'Memos', type: :system do
       expect(page).to have_content '覚えておきたい名前'
     end
 
+    it '他ユーザーのメモは表示されないこと' do
+      other_user = create(:user, email: 'otheruser@test.com')
+      create(:memo, name: '他ユーザーのメモ', user: other_user)
+
+      visit root_path
+      expect(page).to have_no_content '他ユーザーのメモ'
+    end
+
     describe '検索時の表示' do
       context 'キーワードタグで検索した場合' do
         it '「ど忘れしやすい名前」のみ表示されること' do
