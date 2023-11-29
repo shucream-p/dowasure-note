@@ -4,7 +4,8 @@ class MemosController < ApplicationController
   before_action :set_memo, only: %i[show edit update destroy]
 
   def index
-    @memos = params[:latest] ? Memo.latest.page(params[:page]) : Memo.forgetful.page(params[:page])
+    memos = current_user.memos
+    @memos = params[:latest] ? memos.latest.page(params[:page]) : memos.forgetful.page(params[:page])
   end
 
   def show; end
