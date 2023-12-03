@@ -9,5 +9,6 @@ html
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
   body
-    = render 'layouts/header'
+    - if user_signed_in?
+      = render 'layouts/header'
     = yield
