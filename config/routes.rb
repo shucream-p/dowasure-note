@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'memos#index'
+  authenticated do
+    root 'memos#index', as: :authenticated_root
+  end
+  root 'welcome#index'
 
   resources :memos do
     get 'search', on: :collection
