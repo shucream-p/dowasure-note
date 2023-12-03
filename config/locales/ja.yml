@@ -189,3 +189,7 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  notice:
+    create: メモが作成されました
+    update: メモが更新されました
+    delete: メモが削除されました

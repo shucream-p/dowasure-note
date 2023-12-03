@@ -20,7 +20,7 @@ class MemosController < ApplicationController
     @memo = current_user.memos.build(memo_params)
 
     if @memo.save
-      redirect_to root_url, notice: 'Memo was successfully created.'
+      redirect_to root_url, notice: t('notice.create')
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class MemosController < ApplicationController
 
   def update
     if @memo.update(memo_params)
-      redirect_to root_url, notice: 'Memo was successfully updated.'
+      redirect_to root_url, notice: t('notice.update')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class MemosController < ApplicationController
   def destroy
     @memo.destroy
 
-    flash.now.notice = 'Memo was successfully destroyed.'
+    flash.now.notice = t('notice.delete')
   end
 
   def search
