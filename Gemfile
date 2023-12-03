@@ -83,5 +83,6 @@ end
 
 gem 'acts-as-taggable-on'
 gem 'devise'
+gem 'devise-i18n'
 gem 'kaminari'
 gem 'slim-rails'
