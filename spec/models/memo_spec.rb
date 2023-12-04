@@ -12,7 +12,7 @@ RSpec.describe Memo, type: :model do
 
         memo = build(:memo, user:, name: 'ど忘れしやすい名前')
         memo.valid?
-        expect(memo.errors[:name]).to include('has already been taken')
+        expect(memo.errors[:name]).to include('はすでに存在します')
       end
     end
 

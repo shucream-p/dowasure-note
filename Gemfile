@@ -61,6 +61,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'i18n_generators'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
@@ -82,5 +83,6 @@ end
 
 gem 'acts-as-taggable-on'
 gem 'devise'
+gem 'devise-i18n'
 gem 'kaminari'
 gem 'slim-rails'

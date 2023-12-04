@@ -99,7 +99,7 @@ RSpec.describe 'Memos', type: :system do
 
     fill_in 'memo[content]', with: 'ど忘れしやすい名前です'
     click_button '登録'
-    expect(page).to have_content 'Memo was successfully created.'
+    expect(page).to have_content 'メモが作成されました'
     expect(page).to have_content 'ど忘れしやすい名前'
     click_link '編集'
     expect(page).to have_content 'タグ1'
@@ -114,7 +114,7 @@ RSpec.describe 'Memos', type: :system do
     expect(page).to have_field 'memo[name]', with: 'ど忘れしやすい名前'
     fill_in 'memo[name]', with: '編集した名前'
     click_button '更新'
-    expect(page).to have_content 'Memo was successfully updated.'
+    expect(page).to have_content 'メモが更新されました'
     expect(page).to have_content '編集した名前'
   end
 
@@ -125,7 +125,7 @@ RSpec.describe 'Memos', type: :system do
     expect(page).to have_content 'ど忘れしやすい名前'
     click_link '削除'
     expect(page.accept_confirm).to eq '本当に削除してよろしいですか？'
-    expect(page).to have_content 'Memo was successfully destroyed.'
+    expect(page).to have_content 'メモが削除されました'
     expect(page).to have_no_content 'ど忘れしやすい名前'
   end
 
