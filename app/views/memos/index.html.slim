@@ -21,9 +21,10 @@
 
   .mt-6
     = turbo_frame_tag 'memos' do
-      = link_to 'ど忘れが多い順', memos_path
-      = ' | '
-      = link_to '更新順', memos_path(latest: true)
+      .mb-2
+        = link_to 'ど忘れが多い順', memos_path
+        = ' | '
+        = link_to '更新順', memos_path(latest: true)
       = turbo_frame_tag "memos-page-#{@memos.current_page}" do
         = render @memos
         = turbo_frame_tag "memos-page-#{@memos.next_page}", loading: :lazy, src: path_to_next_page(@memos)
