@@ -17,7 +17,7 @@
     | 名前一覧
 
   .mt-6.text-right
-    = button_to '+', new_memo_path, method: :get, class: 'w-12 h-12  bg-indigo-500 text-lg text-white font-semibold rounded-full'
+    = button_to '+', new_memo_path, method: :get, class: 'w-12 h-12 bg-indigo-500 text-lg text-white font-semibold rounded-full shadow'
 
   .mt-6
     = turbo_frame_tag 'memos' do
