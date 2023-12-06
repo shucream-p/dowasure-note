@@ -1,6 +1,6 @@
 = turbo_frame_tag memo do
   li.list-none.flex.items-center.bg-white.shadow.rounded-md.p-2.mb-2
-    strong.text-lg
+    strong.text-lg.text-custom-black
       = memo.name
     - if memo.content.present?
       = link_to memo, data: { turbo_frame: 'memo_content' }, class: 'ml-1'
