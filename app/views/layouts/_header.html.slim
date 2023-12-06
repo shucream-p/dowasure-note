@@ -4,7 +4,7 @@ header.border-b.bg-white.shadow
       = image_tag 'logo.png', class: 'w-32 px-3 py-2'
     - if user_signed_in?
       div data-controller="modal"
-        i.fa-solid.fa-user.fa-lg.pt-4.pr-3 data-action="click->modal#open"
+        i.fa-solid.fa-user.fa-lg.pt-5.pr-4 data-action="click->modal#open"
         .hidden.fixed.w-screen.h-screen.top-0.left-0.bg-gray-700/50 data-modal-target="modal" data-action="click->modal#close"
           .absolute.top-9.right-0.bg-white.p-3
             = link_to 'アカウント設定', edit_user_registration_path
