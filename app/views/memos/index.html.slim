@@ -6,7 +6,7 @@
               method: :get,
               class: 'mt-6',
               html: { data: { turbo_frame: 'memos', controller: 'search-form', action: 'input->search-form#submit' } } do |f|
-    = f.text_field :q, class: 'border rounded w-full px-2'
+    = f.text_field :q, class: 'shadow rounded-md w-full px-2'
     .block.mt-2
       = f.radio_button :search_option, :tag, checked: true
       = f.label :search_option_tag, 'キーワードタグ', class: 'mx-1'
