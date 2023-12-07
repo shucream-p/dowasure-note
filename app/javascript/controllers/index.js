@@ -13,5 +13,8 @@ application.register("modal", ModalController);
 import SearchFormController from "./search_form_controller";
 application.register("search-form", SearchFormController);
 
+import SwiperController from "./swiper_controller";
+application.register("swiper", SwiperController);
+
 import TagifyController from "./tagify_controller";
 application.register("tagify", TagifyController);
