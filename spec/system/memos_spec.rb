@@ -88,7 +88,7 @@ RSpec.describe 'Memos', type: :system do
 
   it 'メモを登録できること' do
     visit root_path
-    click_link '+'
+    click_button '+'
     fill_in 'memo[name]', with: 'ど忘れしやすい名前'
     tag_input = find '.tagify__input'
     tag_input.set 'タグ1'
