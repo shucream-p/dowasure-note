@@ -13,6 +13,9 @@ application.register("modal", ModalController);
 import SearchFormController from "./search_form_controller";
 application.register("search-form", SearchFormController);
 
+import SortLinkController from "./sort_link_controller";
+application.register("sort-link", SortLinkController);
+
 import SwiperController from "./swiper_controller";
 application.register("swiper", SwiperController);
 

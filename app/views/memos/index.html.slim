@@ -20,11 +20,11 @@
     = button_to '+', new_memo_path, method: :get, class: 'w-12 h-12 bg-indigo-500 text-lg text-white font-semibold rounded-full shadow'
 
   .mt-6
+    .mb-3 data-controller="sort-link"
+      = link_to 'ど忘れが多い順', memos_path, data: { turbo_frame: 'memos', action: 'click->sort-link#toggle', sort_link_target: 'forgetful' }
+      = ' | '
+      = link_to '更新順', memos_path(latest: true), class: 'text-gray-400', data: { turbo_frame: 'memos', action: 'click->sort-link#toggle', sort_link_target: 'latest' }
     = turbo_frame_tag 'memos' do
-      .mb-2
-        = link_to 'ど忘れが多い順', memos_path
-        = ' | '
-        = link_to '更新順', memos_path(latest: true)
       = turbo_frame_tag "memos-page-#{@memos.current_page}" do
         = render @memos
         = turbo_frame_tag "memos-page-#{@memos.next_page}", loading: :lazy, src: path_to_next_page(@memos)
