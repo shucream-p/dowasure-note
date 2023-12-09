@@ -1,13 +1,16 @@
 = turbo_frame_tag memo do
+  .bg-white.shadow.rounded-md.mb-2
     div data-controller="swiper"
-        .swiper data-swiper-target="container"
-          .swiper-wrapper
-            .swiper-slide.bg-white.shadow.rounded-md.p-2.mb-2
-              strong.text-lg
-                = memo.name
-              - if memo.content.present?
-                = link_to memo, data: { turbo_frame: 'memo_content' }, class: 'ml-1'
-                  i.fa-regular.fa-comment-dots
-            .swiper-slide.second.py-2
-              = link_to '編集', edit_memo_path(memo), data: { turbo: 'false' }, class: 'text-blue-600 ml-2'
-              = link_to '削除', memo, data: { turbo_method: :delete, turbo_confirm: '本当に削除してよろしいですか？' }, class: 'text-blue-600 ml-2'
+      .swiper data-swiper-target="container"
+        .swiper-wrapper
+          .swiper-slide.p-2
+            strong.text-lg
+              = memo.name
+            - if memo.content.present?
+              = link_to memo, data: { turbo_frame: 'memo_content' }, class: 'ml-1'
+                i.fa-regular.fa-comment-dots
+          .swiper-slide.second
+            = link_to edit_memo_path(memo), data: { turbo: 'false' }
+              i.fa-regular.fa-pen-to-square.fa-lg.p-3.text-white.bg-yellow-500
+            = link_to memo, data: { turbo_method: :delete, turbo_confirm: '本当に削除してよろしいですか？' }
+              i.fa-regular.fa-trash-can.fa-lg.p-3.text-white.bg-red-500.rounded-r-md
