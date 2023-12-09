@@ -6,6 +6,9 @@ header.border-b.bg-white.shadow
       div data-controller="modal"
         i.fa-solid.fa-user.fa-lg.pt-5.pr-4 data-action="click->modal#open"
         .hidden.fixed.w-screen.h-screen.top-0.left-0.bg-gray-700/50.z-20 data-modal-target="modal" data-action="click->modal#close"
-          .absolute.top-9.right-0.bg-white.p-3
-            = link_to 'アカウント設定', edit_user_registration_path
-            = button_to 'ログアウト', destroy_user_session_path, method: :delete
+          .absolute.top-10.right-0.bg-indigo-600.rounded-l-md.p-3
+            ul
+              li.p-2
+                = link_to 'アカウント設定', edit_user_registration_path, class: 'text-white'
+              li.p-2
+                = button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'text-white'
