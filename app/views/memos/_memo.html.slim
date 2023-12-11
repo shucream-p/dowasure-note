@@ -3,8 +3,8 @@
     div data-controller="swiper"
       .swiper data-swiper-target="container"
         .swiper-wrapper
-          .swiper-slide.p-2
-            strong.text-lg
+          .swiper-slide.p-2.truncate data-controller="text" data-text-target="container"
+            strong.text-lg data-action="click->text#toggle"
               = memo.name
             - if memo.content.present?
               = link_to memo, data: { turbo_frame: 'memo_content' }, class: 'ml-1'

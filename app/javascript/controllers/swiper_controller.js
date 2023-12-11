@@ -8,7 +8,6 @@ export default class extends Controller {
   connect() {
     new Swiper(this.containerTarget, {
       slidesPerView: "auto",
-      autoHeight: true,
     });
   }
 }
