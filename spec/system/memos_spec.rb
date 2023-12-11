@@ -101,7 +101,13 @@ RSpec.describe 'Memos', type: :system do
     click_button '登録'
     expect(page).to have_content 'メモが作成されました'
     expect(page).to have_content 'ど忘れしやすい名前'
-    click_link '編集'
+
+    # スワイプしてリンクを表示させる
+    slider = find '.swiper-wrapper'
+    execute_script("arguments[0].style.transform = 'translateX(-85.5px)';", slider)
+
+    edit_icon = find '.fa-pen-to-square'
+    edit_icon.click
     expect(page).to have_content 'タグ1'
     expect(page).to have_content 'ど忘れしやすい名前です'
   end
@@ -110,7 +116,13 @@ RSpec.describe 'Memos', type: :system do
     create(:memo, name: 'ど忘れしやすい名前', user:)
 
     visit root_path
-    click_link '編集'
+
+    # スワイプしてリンクを表示させる
+    slider = find '.swiper-wrapper'
+    execute_script("arguments[0].style.transform = 'translateX(-85.5px)';", slider)
+
+    edit_icon = find '.fa-pen-to-square'
+    edit_icon.click
     expect(page).to have_field 'memo[name]', with: 'ど忘れしやすい名前'
     fill_in 'memo[name]', with: '編集した名前'
     click_button '更新'
@@ -123,7 +135,13 @@ RSpec.describe 'Memos', type: :system do
 
     visit root_path
     expect(page).to have_content 'ど忘れしやすい名前'
-    click_link '削除'
+
+    # スワイプしてリンクを表示させる
+    slider = find '.swiper-wrapper'
+    execute_script("arguments[0].style.transform = 'translateX(-85.5px)';", slider)
+
+    delete_icon = find '.fa-trash-can'
+    delete_icon.click
     expect(page.accept_confirm).to eq '本当に削除してよろしいですか？'
     expect(page).to have_content 'メモが削除されました'
     expect(page).to have_no_content 'ど忘れしやすい名前'
