@@ -7,7 +7,7 @@
             strong.text-lg data-action="click->text#toggle"
               = memo.name
             - if memo.content.present?
-              = link_to memo, data: { turbo_frame: 'memo_content' }, class: 'ml-1'
+              = link_to memo, data: { turbo_frame: 'memo_content' }, class: 'ml-2'
                 i.fa-regular.fa-comment-dots
           .swiper-slide.second
             = link_to edit_memo_path(memo), data: { turbo: 'false' }
