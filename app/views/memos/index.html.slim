@@ -1,4 +1,4 @@
-.container.mx-auto.px-4.md:w-4/12
+.container.mx-auto.px-4.sm:max-w-lg
   #flash
     = render 'flash'
 
@@ -6,29 +6,30 @@
               method: :get,
               class: 'mt-6',
               html: { data: { turbo_frame: 'memos', controller: 'search-form', action: 'input->search-form#submit' } } do |f|
-    = f.text_field :q, class: 'border rounded w-full px-2'
+    = f.text_field :q, class: 'shadow rounded-md w-full px-2 py-1 focus:outline-indigo-500', placeholder: '検索ワード'
     .block.mt-2
-      = f.radio_button :search_option, :tag, checked: true
+      = f.radio_button :search_option, :tag, checked: true, class: 'accent-indigo-500'
       = f.label :search_option_tag, 'キーワードタグ', class: 'mx-1'
-      = f.radio_button :search_option, :name
+      = f.radio_button :search_option, :name, class: 'accent-indigo-500'
       = f.label :search_option_name, '名前', class: 'ml-1'
 
-  h1.font-bold.text-2xl.mt-6
-    | メモ一覧
+  h1.font-bold.text-2xl.mt-6.text-custom-black
+    | 名前一覧
 
-  .mt-6.text-right
-    = link_to '+', new_memo_path, class: 'text-gray-800 font-semibold py-2 px-4 border rounded'
+  .fixed.bottom-12.right-4.sm:right-24.z-10
+    = button_to '+', new_memo_path, method: :get, class: 'w-12 h-12 bg-indigo-500 text-lg text-white font-semibold rounded-full shadow'
 
   .mt-6
-    = turbo_frame_tag 'memos' do
-      = link_to 'ど忘れが多い順', memos_path
+    .mb-3 data-controller="sort-link"
+      = link_to 'ど忘れが多い順', memos_path, data: { turbo_frame: 'memos', action: 'click->sort-link#toggle', sort_link_target: 'forgetful' }
       = ' | '
-      = link_to '更新順', memos_path(latest: true)
+      = link_to '更新順', memos_path(latest: true), class: 'text-gray-400', data: { turbo_frame: 'memos', action: 'click->sort-link#toggle', sort_link_target: 'latest' }
+    = turbo_frame_tag 'memos' do
       = turbo_frame_tag "memos-page-#{@memos.current_page}" do
         = render @memos
         = turbo_frame_tag "memos-page-#{@memos.next_page}", loading: :lazy, src: path_to_next_page(@memos)
 
   div data-controller="modal"
-    .hidden.fixed.w-screen.h-screen.top-0.left-0.bg-gray-700/50 data-modal-target="modal" data-action="turbo:frame-load->modal#open click->modal#close"
-      .absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-1/2.bg-white.p-10.w-10/12.sm:w-fit data-action="click->modal#stay"
+    .hidden.fixed.w-screen.h-screen.top-0.left-0.bg-gray-700/50.z-20 data-modal-target="modal" data-action="turbo:frame-load->modal#open click->modal#close"
+      .absolute.top-1/2.left-1/2.-translate-x-1/2.-translate-y-1/2.bg-white.p-10.rounded-md.w-10/12.sm:max-w-md data-action="click->modal#stay"
         = turbo_frame_tag 'memo_content'
