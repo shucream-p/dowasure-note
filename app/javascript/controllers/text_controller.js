@@ -5,6 +5,13 @@ export default class extends Controller {
   static targets = ["container"];
 
   toggle() {
-    this.containerTarget.classList.toggle("truncate");
+    const container = this.containerTarget;
+
+    if (
+      container.offsetWidth < container.scrollWidth ||
+      !container.classList.contains("truncate")
+    ) {
+      container.classList.toggle("truncate");
+    }
   }
 }
