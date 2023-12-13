@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["forgetful", "latest"];
 
   toggle(event) {
-    const gray = "text-gray-400"
+    const gray = "text-gray-400";
 
     if (event.currentTarget.classList.contains(gray)) {
       this.forgetfulTarget.classList.toggle(gray);
