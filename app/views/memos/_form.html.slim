@@ -1,28 +1,31 @@
-= form_with(model: memo) do |form|
-  - if memo.errors.any?
-    div style="color: red"
-      ul
-        - memo.errors.each do |error|
-          li = error.full_message
+.container.mx-auto.px-4.sm:max-w-md
+  = form_with(model: memo) do |form|
+    - if memo.errors.any?
+      div style="color: red"
+        ul
+          - memo.errors.each do |error|
+            li = error.full_message
 
-  .mt-6
-    = form.label :name
+    .mt-6
+      = form.label :name
+      .mt-2
+        = form.text_field :name, class: 'shadow rounded-md w-full py-2 px-2 focus:outline-indigo-500'
+
+    .mt-2 data-controller="tagify"
+      = form.label :tag_list
+      .mt-2
+        = form.text_area :tag_list,
+                        value: memo.tag_list.join(','),
+                        class: 'bg-white shadow rounded-md w-full',
+                        data: { tagify_target: 'tagInput' }
+
     .mt-2
-      = form.text_field :name, class: 'border rounded w-full py-2 px-2', style: 'display: block'
+      = form.label :content
+      .mt-2
+        = form.text_area :content, class: 'shadow rounded-md resize-none w-full py-2 px-2 focus:outline-indigo-500'
 
-  .mt-2 data-controller="tagify"
-    = form.label :tag_list
-    .mt-2
-      = form.text_area :tag_list,
-                       value: memo.tag_list.join(','),
-                       class: 'border rounded resize-none w-full py-2 px-2',
-                       style: 'display: block',
-                       data: { tagify_target: 'tagInput' }
+    .mt-6.text-center
+      = form.submit class: 'bg-indigo-500 shadow text-white font-semibold h-10 w-40 rounded-md'
 
-  .mt-2
-    = form.label :content
-    .mt-2
-      = form.text_area :content, class: 'border rounded resize-none w-full py-2 px-2', style: 'display: block'
-
-  .mt-6.text-center
-    = form.submit class: 'text-gray-800 font-semibold py-2 px-4 border rounded'
+  .text-center.mt-4.text-xs.text-gray-500.underline.hover:text-indigo-500.hover:no-underline
+    = link_to 'キャンセル', root_path

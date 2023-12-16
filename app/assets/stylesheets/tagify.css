@@ -1,1 +1,10 @@
 @import "@yaireo/tagify/dist/tagify.css";
+
+.tagify {
+  border: none;
+}
+
+.tagify--focus {
+  outline: 2px solid;
+  outline-color: #6366f1;
+}
