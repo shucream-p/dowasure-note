@@ -2,6 +2,7 @@
 
 .tagify {
   border: none;
+  --tag-inset-shadow-size: 2em;
 }
 
 .tagify--focus {
