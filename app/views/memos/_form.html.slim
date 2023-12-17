@@ -7,7 +7,7 @@
             li = error.full_message
 
     .mt-6
-      = form.label :name
+      = form.label :name, class: "after:content-['*'] after:ml-1 after:text-red-500"
       .mt-2
         = form.text_field :name, class: 'shadow rounded-md w-full py-2 px-2 focus:outline-indigo-500'
 
