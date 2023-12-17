@@ -13,6 +13,34 @@
 
     .mt-2 data-controller="tagify"
       = form.label :tag_list
+      span data-controller="modal"
+        i.fa-regular.fa-circle-question.ml-2.text-gray-600 data-action="click->modal#open"
+        .hidden.fixed.w-screen.h-screen.top-0.left-0.bg-gray-700/50.z-20 data-modal-target="modal" data-action="click->modal#close"
+          .absolute.top-36.left-1/2.-translate-x-1/2.bg-white.rounded-md.w-10/12.sm:max-w-md data-action="click->modal#stay"
+            h1.text-xl.font-bold.px-4.py-3.border-b
+              | キーワードタグとは？
+            button.absolute.top-1.right-4.text-3xl.text-gray-400.hover:text-gray-600 data-action="click->modal#close" type="button"
+              | ×
+            .p-4.text-sm
+              p
+                | ど忘れしやすい名前を思い出す、手がかりとなるワードを登録しましょう！
+              br
+              p
+                | 例えば、登録する人物の容姿の特徴や、その人物の名前を思い出そうとする際に、
+                | いつも頭に思い浮かぶ、似たような名前を登録しておくと、
+                | 検索フォームにそのワードを入力するだけで、簡単に名前に辿り着くことができます。
+            h2.text-blue-700.font-bold.text-lg.px-4.border-b
+              | 例
+            .p-4.text-sm
+              h3.font-bold
+                | 名前
+              p
+                | 「ルフィ」
+              h3.font-bold
+                | キーワードタグ
+              p
+                | 「ゴム人間」、「麦わら帽子」、「ルディ」
+
       .mt-2
         = form.text_area :tag_list,
                         value: memo.tag_list.join(','),
