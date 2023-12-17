@@ -8,3 +8,7 @@
   outline: 2px solid;
   outline-color: #6366f1;
 }
+
+.tagify__dropdown__wrapper {
+  border-color: #6366f1;
+}
