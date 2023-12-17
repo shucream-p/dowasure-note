@@ -1,10 +1,11 @@
 .container.mx-auto.px-4.sm:max-w-md
   = form_with(model: memo) do |form|
     - if memo.errors.any?
-      div style="color: red"
+      .bg-red-50.mt-2.p-3.rounded
         ul
           - memo.errors.each do |error|
-            li = error.full_message
+            li.text-red-800.text-sm
+              = error.full_message
 
     .mt-6
       = form.label :name, class: "after:content-['*'] after:ml-1 after:text-red-500"
