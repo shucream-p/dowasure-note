@@ -1,1 +1,15 @@
 @import "@yaireo/tagify/dist/tagify.css";
+
+.tagify {
+  border: none;
+  --tag-inset-shadow-size: 2em;
+}
+
+.tagify--focus {
+  outline: 2px solid;
+  outline-color: #6366f1;
+}
+
+.tagify__dropdown__wrapper {
+  border-color: #6366f1;
+}

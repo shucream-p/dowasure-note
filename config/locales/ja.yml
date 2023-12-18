@@ -7,7 +7,7 @@ ja:
     attributes:
       memo:
         name: 名前
-        content: 内容
+        content: メモ
         tag_list: キーワードタグ
     errors:
       messages:
