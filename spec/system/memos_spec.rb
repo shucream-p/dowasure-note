@@ -88,7 +88,7 @@ RSpec.describe 'Memos', type: :system do
 
   it 'メモを登録できること' do
     visit root_path
-    click_button '+'
+    click_button '登録する'
     fill_in 'memo[name]', with: 'ど忘れしやすい名前'
     tag_input = find '.tagify__input'
     tag_input.set 'タグ1'
@@ -144,7 +144,7 @@ RSpec.describe 'Memos', type: :system do
     delete_icon.click
     expect(page.accept_confirm).to eq '本当に削除してよろしいですか？'
     expect(page).to have_content 'メモが削除されました'
-    expect(page).to have_no_content 'ど忘れしやすい名前'
+    expect(page).to have_content 'まだメモが登録されていません'
   end
 
   it 'メモの内容を表示できること' do

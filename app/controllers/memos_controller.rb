@@ -37,6 +37,9 @@ class MemosController < ApplicationController
   def destroy
     @memo.destroy
 
+    # 削除して登録しているメモが0になったら、Turbo Streamsで登録なしの表示に更新するため
+    @count = current_user.memos.count
+
     flash.now.notice = t('notice.delete')
   end
 
