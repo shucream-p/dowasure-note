@@ -1,0 +1,9 @@
+.text-center
+  p.mt-12
+    | まだメモが登録されていません。
+    br
+    | ど忘れしやすい名前をすぐに思い出すために、
+    br
+    | メモとして登録しておきましょう！
+  .mt-6
+    = button_to '登録する', new_memo_path, method: :get, class: 'bg-indigo-500 shadow text-white font-semibold h-10 w-40 rounded-md'
