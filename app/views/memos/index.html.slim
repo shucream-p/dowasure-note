@@ -16,9 +16,6 @@
           = f.radio_button :search_option, :name, class: 'accent-indigo-500'
           = f.label :search_option_name, '名前', class: 'ml-1'
 
-      h1.font-bold.text-2xl.mt-6.text-custom-black
-        | 名前一覧
-
       .fixed.bottom-12.right-4.sm:right-24.z-10
         = button_to '+', new_memo_path, method: :get, class: 'w-12 h-12 bg-indigo-500 text-lg text-white font-semibold rounded-full shadow'
 
