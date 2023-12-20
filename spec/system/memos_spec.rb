@@ -66,22 +66,22 @@ RSpec.describe 'Memos', type: :system do
 
     describe 'ソート機能' do
       it '検索した後順番が入れ替わること' do
-        expect(first('strong').text).to eq 'ど忘れしやすい名前'
+        expect(first('#name').text).to eq 'ど忘れしやすい名前'
         choose '名前'
         fill_in 'q', with: '覚えて'
         wait_for_turbo_frame
         visit root_path
-        expect(first('strong').text).to eq '覚えておきたい名前'
+        expect(first('#name').text).to eq '覚えておきたい名前'
       end
 
       it 'ソートのリンクが機能すること' do
-        expect(first('strong').text).to eq 'ど忘れしやすい名前'
+        expect(first('#name').text).to eq 'ど忘れしやすい名前'
         click_link('更新順')
         wait_for_turbo
-        expect(first('strong').text).to eq '覚えておきたい名前'
+        expect(first('#name').text).to eq '覚えておきたい名前'
         click_link('ど忘れが多い順')
         wait_for_turbo
-        expect(first('strong').text).to eq 'ど忘れしやすい名前'
+        expect(first('#name').text).to eq 'ど忘れしやすい名前'
       end
     end
   end
