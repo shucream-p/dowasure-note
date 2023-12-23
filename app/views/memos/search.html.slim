@@ -1,6 +1,6 @@
-= turbo_frame_tag 'memos' do
+= turbo_frame_tag 'list' do
   - if @memos.blank?
-    .text-center
+    .mt-14.text-center
       = '見つかりませんでした。'
   - else
     = turbo_frame_tag "memos-page-#{@memos.current_page}" do
