@@ -2,7 +2,7 @@
   #flash
     = render 'flash'
   #main
-    - if @memos.empty?
+    - if @memos.blank?
       = render 'no_registered'
     - else
       = form_with url: search_memos_path,
