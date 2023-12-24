@@ -14,7 +14,7 @@ export default class extends Controller {
     }
   }
 
-  toggle(event) {
+  toggleTextColor(event) {
     const gray = "text-gray-400";
 
     if (event.currentTarget.classList.contains(gray)) {

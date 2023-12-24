@@ -24,8 +24,8 @@
 
       .mt-6
         #js-sort-link.mb-3 data-controller="sort-link"
-          = link_to 'ど忘れが多い順', memos_path, class: 'border-r border-black pr-2 mr-2', data: { turbo_frame: 'memos', action: 'click->sort-link#toggle', sort_link_target: 'forgetful' }
-          = link_to '更新順', memos_path(latest: true), class: 'text-gray-400', data: { turbo_frame: 'memos', action: 'click->sort-link#toggle', sort_link_target: 'latest' }
+          = link_to 'ど忘れが多い順', memos_path, class: 'border-r border-black pr-2 mr-2', data: { turbo_frame: 'memos', action: 'click->sort-link#toggleTextColor', sort_link_target: 'forgetful' }
+          = link_to '更新順', memos_path(latest: true), class: 'text-gray-400', data: { turbo_frame: 'memos', action: 'click->sort-link#toggleTextColor', sort_link_target: 'latest' }
         = turbo_frame_tag 'memos' do
           = turbo_frame_tag "memos-page-#{@memos.current_page}" do
             = render @memos
