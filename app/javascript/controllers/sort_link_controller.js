@@ -4,7 +4,17 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["forgetful", "latest"];
 
-  toggle(event) {
+  toggleHidden(event) {
+    const sortLink = document.getElementById("js-sort-link");
+
+    if (event.currentTarget.value != "") {
+      sortLink.classList.add("hidden");
+    } else {
+      sortLink.classList.remove("hidden");
+    }
+  }
+
+  toggleTextColor(event) {
     const gray = "text-gray-400";
 
     if (event.currentTarget.classList.contains(gray)) {

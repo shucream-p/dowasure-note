@@ -2,14 +2,17 @@
   #flash
     = render 'flash'
   #main
-    - if @memos.empty?
+    - if @memos.blank?
       = render 'no_registered'
     - else
       = form_with url: search_memos_path,
                   method: :get,
                   class: 'mt-6',
-                  html: { data: { turbo_frame: 'memos', controller: 'search-form', action: 'input->search-form#submit' } } do |f|
-        = f.text_field :q, class: 'shadow rounded-md w-full px-2 py-1 focus:outline-indigo-500', placeholder: '検索ワード'
+                  data: { turbo_frame: 'memos', controller: 'search-form', action: 'input->search-form#submit' } do |f|
+        = f.text_field :q,
+                       class: 'shadow rounded-md w-full px-2 py-1 focus:outline-indigo-500',
+                       placeholder: '検索ワード',
+                       data: { controller: 'sort-link', action: 'input->sort-link#toggleHidden' }
         .block.mt-2
           = f.radio_button :search_option, :tag, checked: true, class: 'accent-indigo-500'
           = f.label :search_option_tag, 'キーワードタグ', class: 'ml-1'
@@ -20,9 +23,9 @@
         = button_to '+', new_memo_path, method: :get, class: 'w-12 h-12 bg-indigo-500 text-lg text-white font-semibold rounded-full shadow'
 
       .mt-6
-        .mb-3 data-controller="sort-link"
-          = link_to 'ど忘れが多い順', memos_path, class: 'border-r border-black pr-2 mr-2', data: { turbo_frame: 'memos', action: 'click->sort-link#toggle', sort_link_target: 'forgetful' }
-          = link_to '更新順', memos_path(latest: true), class: 'text-gray-400', data: { turbo_frame: 'memos', action: 'click->sort-link#toggle', sort_link_target: 'latest' }
+        #js-sort-link.mb-3 data-controller="sort-link"
+          = link_to 'ど忘れが多い順', memos_path, class: 'border-r border-black pr-2 mr-2', data: { turbo_frame: 'memos', action: 'click->sort-link#toggleTextColor', sort_link_target: 'forgetful' }
+          = link_to '更新順', memos_path(latest: true), class: 'text-gray-400', data: { turbo_frame: 'memos', action: 'click->sort-link#toggleTextColor', sort_link_target: 'latest' }
         = turbo_frame_tag 'memos' do
           = turbo_frame_tag "memos-page-#{@memos.current_page}" do
             = render @memos

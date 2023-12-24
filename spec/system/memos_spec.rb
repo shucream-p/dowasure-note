@@ -62,6 +62,13 @@ RSpec.describe 'Memos', type: :system do
           expect(page).to have_content '覚えておきたい名前'
         end
       end
+
+      context '検索結果なしの場合' do
+        it '「見つかりませんでした。」と表示されること' do
+          fill_in 'q', with: 'タグ3'
+          expect(page).to have_content '見つかりませんでした。'
+        end
+      end
     end
 
     describe 'ソート機能' do

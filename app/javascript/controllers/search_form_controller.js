@@ -2,11 +2,18 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="search-form"
 export default class extends Controller {
-  submit() {
-    clearTimeout(this.timeout);
+  submit(event) {
+    if (event.data && event.data == this.eventData) {
+      return;
+    }
 
-    this.timeout = setTimeout(() => {
-      this.element.requestSubmit();
-    }, 200);
+    if (event.data !== undefined) {
+      clearTimeout(this.timeout);
+
+      this.timeout = setTimeout(() => {
+        this.eventData = event.data;
+        this.element.requestSubmit();
+      }, 200);
+    }
   }
 }
