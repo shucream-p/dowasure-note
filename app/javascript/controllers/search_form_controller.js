@@ -7,13 +7,11 @@ export default class extends Controller {
       return;
     }
 
-    if (event.data !== undefined) {
-      clearTimeout(this.timeout);
+    clearTimeout(this.timeout);
 
-      this.timeout = setTimeout(() => {
-        this.eventData = event.data;
-        this.element.requestSubmit();
-      }, 200);
-    }
+    this.timeout = setTimeout(() => {
+      this.eventData = event.data;
+      this.element.requestSubmit();
+    }, 200);
   }
 }
