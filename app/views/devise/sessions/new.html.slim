@@ -6,6 +6,11 @@
   h2.text-center.font-bold.text-xl.mt-8
     | ログイン
 
+  - flash.each do |key, value|
+    - if key == 'alert'
+      .bg-red-50.mt-2.p-3.rounded.text-red-800.text-sm
+        = content_tag :div, value
+
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
 
     .field.mt-6
