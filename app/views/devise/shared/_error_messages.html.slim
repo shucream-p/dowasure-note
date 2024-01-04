@@ -1,0 +1,7 @@
+- if resource.errors.any?
+  #error_explanation data-turbo-cache="false"
+    .bg-red-50.mt-2.p-3.rounded
+      ul
+        - resource.errors.full_messages.each do |message|
+          li.text-red-800.text-sm
+            = message

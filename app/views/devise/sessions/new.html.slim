@@ -1,0 +1,33 @@
+.container.mx-auto.px-4.sm:max-w-md
+  .mt-6.text-center
+    = link_to root_path
+      = image_tag 'logo.png', class: 'h-16 inline-block'
+
+  h2.text-center.font-bold.text-xl.mt-8
+    | ログイン
+
+  - flash.each do |key, value|
+    - if key == 'alert'
+      .bg-red-50.mt-2.p-3.rounded.text-red-800.text-sm
+        = content_tag :div, value
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+    .field.mt-6
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+
+    .field.mt-2
+      = f.label :password
+      = f.password_field :password, autocomplete: 'current-password', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+
+    - if devise_mapping.rememberable?
+      .field.mt-2
+        = f.check_box :remember_me, class: 'mr-2'
+        = f.label :remember_me
+
+    .actions.mt-6.text-center
+      = f.submit 'ログイン', class: 'bg-indigo-500 text-white font-semibold h-10 w-40 shadow rounded-md'
+
+  .mt-5.text-center
+    = render 'devise/shared/links'
