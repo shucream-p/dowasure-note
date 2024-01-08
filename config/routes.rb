@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'terms', to: 'welcome#terms'
+  get 'privacy', to: 'welcome#privacy'
 
   resources :memos do
     get 'search', on: :collection
