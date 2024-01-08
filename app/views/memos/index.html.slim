@@ -22,7 +22,7 @@
       .fixed.bottom-12.right-4.sm:right-24.z-10
         = button_to '+', new_memo_path, method: :get, class: 'w-12 h-12 bg-indigo-500 text-lg text-white font-semibold rounded-full shadow'
 
-      .mt-6
+      .my-6
         #js-sort-link.mb-3 data-controller="sort-link"
           = link_to 'ど忘れが多い順', memos_path, class: 'border-r border-black pr-2 mr-2', data: { turbo_frame: 'memos', action: 'click->sort-link#toggleTextColor', sort_link_target: 'forgetful' }
           = link_to '更新順', memos_path(latest: true), class: 'text-gray-400', data: { turbo_frame: 'memos', action: 'click->sort-link#toggleTextColor', sort_link_target: 'latest' }

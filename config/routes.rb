@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   end
   root 'welcome#index'
 
+  get 'terms', to: 'welcome#terms'
+  get 'privacy', to: 'welcome#privacy'
+
   resources :memos do
     get 'search', on: :collection
   end
