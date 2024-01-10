@@ -3,7 +3,7 @@
     = link_to root_path
       = image_tag 'logo.png', class: 'h-16 inline-block'
 
-  h2.text-center.font-bold.text-xl.mt-8
+  h2.text-center.font-bold.text-xl.text-custom-black.mt-8
     | パスワード再設定
 
   = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
