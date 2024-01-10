@@ -10,6 +10,9 @@ application.register("hello", HelloController);
 import ModalController from "./modal_controller";
 application.register("modal", ModalController);
 
+import RemovalController from "./removal_controller";
+application.register("removal", RemovalController);
+
 import SearchFormController from "./search_form_controller";
 application.register("search-form", SearchFormController);
 
