@@ -1,11 +1,11 @@
-h2.text-center.font-bold.text-xl.text-custom-black.py-6.bg-indigo-400
+h2.text-center.font-bold.text-xl.py-6.bg-indigo-400
   | アカウント設定
 
 .container.mx-auto.px-4.sm:max-w-md
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
     = render 'devise/shared/error_messages', resource:
 
-    h3.font-bold.text-lg.text-custom-black.mt-8
+    h3.font-bold.text-lg.mt-8
       | メールアドレス変更
 
     .field.mt-6
@@ -17,7 +17,7 @@ h2.text-center.font-bold.text-xl.text-custom-black.py-6.bg-indigo-400
         | Currently waiting confirmation for:
         = resource.unconfirmed_email
 
-    h3.font-bold.text-lg.text-custom-black.mt-8
+    h3.font-bold.text-lg.mt-8
       | パスワード変更
 
     .mt-2
@@ -35,7 +35,7 @@ h2.text-center.font-bold.text-xl.text-custom-black.py-6.bg-indigo-400
       = f.label :password_confirmation
       = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
 
-    h3.font-bold.text-lg.text-custom-black.mt-8
+    h3.font-bold.text-lg.mt-8
       | 現在のパスワードを入力
 
     .mt-2
@@ -49,7 +49,7 @@ h2.text-center.font-bold.text-xl.text-custom-black.py-6.bg-indigo-400
     .actions.mt-6.text-center
       = f.submit '更新', class: 'bg-indigo-500 text-white font-semibold h-10 w-40 shadow rounded-md'
 
-  h3.font-bold.text-lg.text-custom-black.mt-8
+  h3.font-bold.text-lg.mt-8
     | アカウント削除
   .mt-6.mb-8.text-center
     = button_to 'アカウントを削除する', registration_path(resource_name), data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' }, method: :delete, class: 'text-red-500 underline hover:text-red-400 hover:no-underline'
