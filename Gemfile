@@ -88,3 +88,5 @@ gem 'devise-i18n'
 gem 'kaminari'
 gem 'meta-tags'
 gem 'slim-rails'
+
+gem 'dockerfile-rails', '>= 1.6', group: :development
