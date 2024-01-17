@@ -50,7 +50,5 @@ h2.text-center.font-bold.text-xl.text-slate-800.py-6.bg-indigo-400
     .actions.mt-6.text-center
       = f.submit '更新', class: 'bg-indigo-500 text-white font-semibold h-10 w-40 shadow rounded-md'
 
-  h3.font-bold.text-lg.mt-8
-    | アカウント削除
-  .mt-6.mb-8.text-center
-    = button_to 'アカウントを削除する', registration_path(resource_name), data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' }, method: :delete, class: 'text-red-500 underline hover:no-underline'
+  .mt-12.mb-4.text-center
+    = button_to 'アカウントを削除する', registration_path(resource_name), data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' }, method: :delete, class: 'text-sm text-gray-500 underline hover:no-underline'
