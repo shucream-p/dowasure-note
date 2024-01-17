@@ -4,6 +4,10 @@
 @import "tagify";
 @import "swiper";
 
+input[type="submit"] {
+  cursor: pointer;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
