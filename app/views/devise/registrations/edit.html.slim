@@ -51,4 +51,8 @@ h2.text-center.font-bold.text-xl.text-slate-800.py-6.bg-indigo-400
       = f.submit '更新', class: 'bg-indigo-500 text-white font-semibold h-10 w-40 shadow rounded-md'
 
   .mt-12.mb-4.text-center
-    = button_to 'アカウントを削除する', registration_path(resource_name), data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' }, method: :delete, class: 'text-sm text-gray-500 underline hover:no-underline'
+    = button_to 'アカウントを削除する',
+                registration_path(resource_name),
+                data: { turbo_confirm: 'アカウントを削除すると、登録しているデータが全て失われます。本当によろしいですか？' },
+                method: :delete,
+                class: 'text-sm text-gray-500 underline hover:no-underline'
