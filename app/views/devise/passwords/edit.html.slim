@@ -18,11 +18,11 @@
         | （
         = @minimum_password_length
         | 文字以上）
-      = f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+      = f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'mt-2 py-2 px-2'
 
     .field.mt-6
       = f.label :password_confirmation, 'パスワード（確認）'
-      = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+      = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'mt-2 py-2 px-2'
 
     .actions.mt-6.text-center
       = f.submit '再設定', class: 'bg-indigo-500 text-white font-semibold h-10 w-40 shadow rounded-md'

@@ -12,7 +12,7 @@
 
     .field.mt-6
       = f.label :email
-      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'mt-2 py-2 px-2'
 
     .field.mt-2
       = f.label :password
@@ -20,11 +20,11 @@
           | （
           = @minimum_password_length
           | 文字以上）
-      = f.password_field :password, autocomplete: 'new-password', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+      = f.password_field :password, autocomplete: 'new-password', class: 'mt-2 py-2 px-2'
 
     .field.mt-2
       = f.label :password_confirmation
-      = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+      = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'mt-2 py-2 px-2'
 
     .actions.mt-6.text-center
       = f.submit 'アカウント登録', class: 'bg-indigo-500 text-white font-semibold h-10 w-40 shadow rounded-md'
