@@ -8,6 +8,12 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+a:hover,
+button:hover,
+input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
