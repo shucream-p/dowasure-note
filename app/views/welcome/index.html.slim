@@ -1,37 +1,52 @@
 - set_meta_tags title: 'トップ'
-.container.mx-auto.px-4.sm:max-w-lg
+.container.mx-auto.px-4.sm:max-w-lg.text-center
   #flash
     = render 'layouts/flash'
-  .text-center
-    .mt-12
-      = image_tag 'logo.png', alt: 'サービスのロゴ', class: 'w-80 inline-block'
-    p.mt-6.font-bold
-      | ど忘れしやすい名前を似たような名前や関連ワードと一緒に登録！
-      br
-      | インクリメンタルサーチですばやく検索できます。
-    .mt-10
-      = button_to '新規登録', new_user_registration_path, method: :get, class: 'bg-indigo-500 shadow text-white font-semibold h-10 w-40 rounded-md'
-    .mt-6
-      = link_to 'ログインはこちらから', new_user_session_path, class: 'block underline text-orange-700 text-xs hover:no-underline'
 
-  .mt-12.bg-white.p-6.rounded-md.shadow
-    h2.mt-2.text-xl.font-bold.text-center
-      | 使い方
-    p.mt-6
-      | ど忘れしやすい名前を思い出そうとする際に、いつも思い浮かぶ似たような名前や容姿の特徴などを、キーワードタグとして名前と一緒に登録します。
-    .mt-6.text-center
+  .mt-12
+    = image_tag 'logo.png', alt: 'サービスのロゴ', class: 'w-80 inline-block'
+  p.mt-6.font-bold
+    | ど忘れしやすい名前を関連ワードと一緒に登録！
+    br
+    | インクリメンタルサーチですばやく検索できます。
+  .mt-10
+    = button_to '新規登録', new_user_registration_path, method: :get, class: 'bg-indigo-500 shadow text-white font-semibold h-10 w-40 rounded-md'
+  .mt-6
+    = link_to 'ログインはこちらから', new_user_session_path, class: 'block underline text-gray-500 text-xs hover:no-underline'
+
+  .mt-12.bg-white.px-6.py-16.rounded-md.shadow
+    h2.text-lg.font-bold
+      | ついつい名前を「ど忘れ」してしまうことありませんか？
+    .mt-8
+      = image_tag 'person_thinking.png', alt: '考えてる人', class: 'w-32 sm:w-40 inline-block'
+    p.mt-8.text-sm
+      | 思い出そうとする際に出てくる関連ワードを、キーワードタグとして名前と一緒に登録しておきましょう！
+    .mt-6
       = image_tag 'memos_new.png', alt: 'メモの登録方法', class: 'w-44 sm:w-60 shadow rounded-md inline-block'
-    p.mt-10
-      | 検索フォームにキーワードタグを入力すると、思い出したい名前が表示されます！（名前であいまい検索も可能です。）
-    .mt-6.text-center
+    p.mt-10.text-sm
+      | 検索フォームにキーワードタグを入力すると、思い出したい名前が表示されます！
+    .mt-6
       = image_tag 'memos_search.png', alt: 'メモの検索方法', class: 'w-44 sm:w-60 shadow rounded-md inline-block'
+    h2.mt-20.text-lg.font-bold.text-center
+      | こんな時にも便利！
+    p.mt-6.text-sm
+      | 漫画を読んでいる時
+    .mt-8
+      = image_tag 'person_reading_manga.png', alt: '漫画を読んでいる人', class: 'w-32 sm:w-40 inline-block'
+    p.mt-8.text-sm
+      | 検索して名前の横にある吹き出しをクリックすると、
+    .mt-6
+      = image_tag 'click_speech_bubble.png', alt: '吹き出しアイコンの説明', class: 'w-44 sm:w-60 shadow rounded-md inline-block'
+    p.mt-10.text-sm
+      | モーダルでメモが表示されます！
+    .mt-6
+      = image_tag 'memos_show.png', alt: 'メモ表示', class: 'w-44 sm:w-60 shadow rounded-md inline-block'
 
-  .text-center
-    h2.mt-6.text-lg.font-bold
-      | 今すぐ使ってみる
-    p.mt-2
-      | メールアドレスで無料で登録できます。
-    .mt-6
-      = button_to '新規登録', new_user_registration_path, method: :get, class: 'bg-indigo-500 shadow text-white font-semibold h-10 w-40 rounded-md'
-    .mt-6
-      = link_to 'ログインはこちらから', new_user_session_path, class: 'block underline text-orange-700 text-xs hover:no-underline'
+  h2.mt-12.text-lg.font-bold
+    | 今すぐ使ってみる
+  p.mt-2
+    | メールアドレスで無料で登録できます。
+  .mt-6
+    = button_to '新規登録', new_user_registration_path, method: :get, class: 'bg-indigo-500 shadow text-white font-semibold h-10 w-40 rounded-md'
+  .mt-6.mb-5
+    = link_to 'ログインはこちらから', new_user_session_path, class: 'block underline text-gray-500 text-xs hover:no-underline'
