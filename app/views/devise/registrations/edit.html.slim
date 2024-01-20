@@ -11,7 +11,7 @@ h2.text-center.font-bold.text-xl.text-slate-800.py-6.bg-indigo-400
 
     .field.mt-6
       = f.label :email
-      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'mt-2 py-2 px-2'
 
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       div
@@ -30,11 +30,11 @@ h2.text-center.font-bold.text-xl.text-slate-800.py-6.bg-indigo-400
         | （
         = @minimum_password_length
         | 文字以上）
-      = f.password_field :password, autocomplete: 'new-password', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+      = f.password_field :password, autocomplete: 'new-password', class: 'mt-2 py-2 px-2'
 
     .field.mt-6
       = f.label :password_confirmation
-      = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+      = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'mt-2 py-2 px-2'
 
     h3.font-bold.text-lg.mt-8
       | 現在のパスワードを入力
@@ -45,12 +45,14 @@ h2.text-center.font-bold.text-xl.text-slate-800.py-6.bg-indigo-400
 
     .field.mt-6
       = f.label :current_password
-      = f.password_field :current_password, autocomplete: 'current-password', class: 'shadow rounded-md w-full mt-2 py-2 px-2 focus:outline-indigo-500'
+      = f.password_field :current_password, autocomplete: 'current-password', class: 'mt-2 py-2 px-2'
 
     .actions.mt-6.text-center
       = f.submit '更新', class: 'bg-indigo-500 text-white font-semibold h-10 w-40 shadow rounded-md'
 
-  h3.font-bold.text-lg.mt-8
-    | アカウント削除
-  .mt-6.mb-8.text-center
-    = button_to 'アカウントを削除する', registration_path(resource_name), data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure?' }, method: :delete, class: 'text-red-500 underline hover:text-red-400 hover:no-underline'
+  .mt-12.mb-4.text-center
+    = button_to 'アカウントを削除する',
+                registration_path(resource_name),
+                data: { turbo_confirm: 'アカウントを削除すると、登録しているデータが全て失われます。本当によろしいですか？' },
+                method: :delete,
+                class: 'text-sm text-gray-500 underline hover:no-underline'
