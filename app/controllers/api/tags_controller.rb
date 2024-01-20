@@ -6,7 +6,7 @@ module API
       query = params[:query]
       @tags = ActsAsTaggableOn::Tag.for_tenant(current_user.id)
                                    .where('name LIKE ?', "#{query}%")
-                                   .pluck(:name)
+                                   .map(&:name)
       render json: @tags
     end
   end
