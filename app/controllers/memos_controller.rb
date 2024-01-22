@@ -60,7 +60,7 @@ class MemosController < ApplicationController
   private
 
   def set_memo
-    @memo = Memo.find(params[:id])
+    @memo = current_user.memos.find(params[:id])
   end
 
   def memo_params
