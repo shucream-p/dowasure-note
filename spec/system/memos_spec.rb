@@ -34,7 +34,7 @@ RSpec.describe 'Memos', type: :system do
         it '「ど忘れしやすい名前」のみ表示されること' do
           expect(page).to have_checked_field('キーワードタグ')
           fill_in 'q', with: 'タグ1 タグ2'
-          wait_for_turbo_frame
+          find 'turbo-frame[complete]'
           expect(page).to have_content 'ど忘れしやすい名前'
           expect(page).to have_no_content '覚えておきたい名前'
         end
@@ -44,7 +44,7 @@ RSpec.describe 'Memos', type: :system do
         it '「覚えておきたい名前」のみ表示されること' do
           choose '名前'
           fill_in 'q', with: '覚えて'
-          wait_for_turbo_frame
+          find 'turbo-frame[complete]'
           expect(page).to have_content '覚えておきたい名前'
           expect(page).to have_no_content 'ど忘れしやすい名前'
         end
@@ -53,11 +53,11 @@ RSpec.describe 'Memos', type: :system do
       context '検索ワードを削除した場合' do
         it '全てのメモが表示されること' do
           fill_in 'q', with: 'タグ1 タグ2'
-          wait_for_turbo_frame
+          find 'turbo-frame[complete]'
           expect(page).to have_content 'ど忘れしやすい名前'
           expect(page).to have_no_content '覚えておきたい名前'
           find('input[name="q"]').send_keys([:backspace] * 7)
-          wait_for_turbo_frame
+          find 'turbo-frame[complete]'
           expect(page).to have_content 'ど忘れしやすい名前'
           expect(page).to have_content '覚えておきたい名前'
         end
@@ -76,7 +76,7 @@ RSpec.describe 'Memos', type: :system do
         expect(first('#name').text).to eq 'ど忘れしやすい名前'
         choose '名前'
         fill_in 'q', with: '覚えて'
-        wait_for_turbo_frame
+        find 'turbo-frame[complete]'
         visit root_path
         expect(first('#name').text).to eq '覚えておきたい名前'
       end
@@ -84,10 +84,10 @@ RSpec.describe 'Memos', type: :system do
       it 'ソートのリンクが機能すること' do
         expect(first('#name').text).to eq 'ど忘れしやすい名前'
         click_link('更新順')
-        wait_for_turbo
+        find 'turbo-frame[complete]'
         expect(first('#name').text).to eq '覚えておきたい名前'
         click_link('ど忘れが多い順')
-        wait_for_turbo
+        find 'turbo-frame[complete]'
         expect(first('#name').text).to eq 'ど忘れしやすい名前'
       end
     end
