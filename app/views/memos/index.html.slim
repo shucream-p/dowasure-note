@@ -6,7 +6,7 @@
     - if @memos.blank?
       = render 'no_registered'
     - else
-      = form_with url: search_memos_path,
+      = form_with url: memos_searches_path,
                   method: :get,
                   class: 'mt-6',
                   data: { turbo_frame: 'memos', controller: 'search-form', action: 'input->search-form#submit' } do |f|

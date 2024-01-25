@@ -4,5 +4,5 @@
       = '見つかりませんでした。'
   - else
     = turbo_frame_tag "memos-page-#{@memos.current_page}" do
-      = render @memos
+      = render partial: 'memos/memo', collection: @memos
       = turbo_frame_tag "memos-page-#{@memos.next_page}", loading: :lazy, src: path_to_next_page(@memos)

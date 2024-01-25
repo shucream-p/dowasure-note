@@ -25,7 +25,9 @@ export default class extends Controller {
       controller = new AbortController();
 
       if (value) {
-        fetch(`/api/tags/search?query=${value}`, { signal: controller.signal })
+        fetch(`/api/tags/searches?query=${value}`, {
+          signal: controller.signal,
+        })
           .then((RES) => RES.json())
           .then(function (newWhitelist) {
             tagify.whitelist = newWhitelist;
