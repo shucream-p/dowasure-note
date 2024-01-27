@@ -72,6 +72,15 @@ RSpec.describe 'Memos', type: :system do
       expect(page).to have_content 'ど忘れしやすい名前です'
     end
 
+    it 'キーワードタグの説明モーダルが表示されること' do
+      visit new_memo_path
+      question_icon = find '.fa-circle-question'
+      question_icon.click
+      expect(page).to have_content 'キーワードタグとは？'
+      click_button('×')
+      expect(page).to have_no_content 'キーワードタグとは？'
+    end
+
     describe 'キーワードタグ入力のサジェスト' do
       it 'キーワードタグのサジェストが表示されること' do
         create(:memo, tag_list: ['登録されているタグ'], user:)
