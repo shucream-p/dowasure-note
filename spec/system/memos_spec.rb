@@ -71,6 +71,25 @@ RSpec.describe 'Memos', type: :system do
       expect(page).to have_content 'タグ1'
       expect(page).to have_content 'ど忘れしやすい名前です'
     end
+
+    describe 'キーワードタグ入力のサジェスト' do
+      it 'キーワードタグのサジェストが表示されること' do
+        create(:memo, tag_list: ['登録されているタグ'], user:)
+        visit new_memo_path
+        tag_input = find '.tagify__input'
+        tag_input.set '登録'
+        expect(page).to have_content '登録されているタグ'
+      end
+
+      it '他ユーザーの登録しているキーワードタグは表示されないこと' do
+        other_user = create(:user, email: 'otheruser@test.com')
+        create(:memo, tag_list: ['他ユーザーのタグ'], user: other_user)
+        visit new_memo_path
+        tag_input = find '.tagify__input'
+        tag_input.set '他'
+        expect(page).to have_no_content '他ユーザーのタグ'
+      end
+    end
   end
 
   describe '編集' do
