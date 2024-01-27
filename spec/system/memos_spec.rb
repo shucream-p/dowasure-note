@@ -42,6 +42,8 @@ RSpec.describe 'Memos', type: :system do
       comment_icon = find '.fa-comment-dots'
       comment_icon.click
       expect(page).to have_content 'ど忘れしやすい名前です'
+      click_button('×')
+      expect(page).to have_no_content 'ど忘れしやすい名前です'
     end
   end
 
