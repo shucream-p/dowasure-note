@@ -120,7 +120,7 @@ RSpec.describe 'Memos', type: :system do
     end
 
     context 'キーワードタグで検索した場合' do
-      it '「ど忘れしやすい名前」のみ表示されること' do
+      it '入力したキーワードタグを持つメモのみ表示されること' do
         expect(page).to have_checked_field('キーワードタグ')
         fill_in 'q', with: 'タグ1 タグ2'
         find 'turbo-frame[complete]'
@@ -130,7 +130,7 @@ RSpec.describe 'Memos', type: :system do
     end
 
     context '名前で検索した場合' do
-      it '「覚えておきたい名前」のみ表示されること' do
+      it '入力したワードを名前に含むメモのみ表示されること' do
         choose '名前'
         fill_in 'q', with: '覚えて'
         find 'turbo-frame[complete]'
