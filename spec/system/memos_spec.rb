@@ -10,18 +10,27 @@ RSpec.describe 'Memos', type: :system do
   end
 
   describe '一覧表示' do
-    it 'メモが表示されること' do
-      create(:memo, name: 'ど忘れしやすい名前', user:)
-      visit root_path
-      expect(page).to have_content 'ど忘れしやすい名前'
+    context 'メモの登録がある場合' do
+      it '登録したメモが表示されること' do
+        create(:memo, name: 'ど忘れしやすい名前', user:)
+        visit root_path
+        expect(page).to have_content 'ど忘れしやすい名前'
+      end
+
+      it '他ユーザーのメモは表示されないこと' do
+        other_user = create(:user, email: 'otheruser@test.com')
+        create(:memo, name: '他ユーザーのメモ', user: other_user)
+
+        visit root_path
+        expect(page).to have_no_content '他ユーザーのメモ'
+      end
     end
 
-    it '他ユーザーのメモは表示されないこと' do
-      other_user = create(:user, email: 'otheruser@test.com')
-      create(:memo, name: '他ユーザーのメモ', user: other_user)
-
-      visit root_path
-      expect(page).to have_no_content '他ユーザーのメモ'
+    context 'メモの登録がない場合' do
+      it '「まだメモが登録されていません」と表示されること' do
+        visit root_path
+        expect(page).to have_content 'まだメモが登録されていません'
+      end
     end
   end
 
