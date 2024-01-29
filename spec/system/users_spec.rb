@@ -64,5 +64,10 @@ RSpec.describe 'Users', type: :system do
       click_button 'ログアウト'
       expect(page).to have_content 'ログアウトしました。'
     end
+
+    it 'メニューが閉じること' do
+      click_button('×')
+      expect(page).to have_no_content 'アカウント設定'
+    end
   end
 end
