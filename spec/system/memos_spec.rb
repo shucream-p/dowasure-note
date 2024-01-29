@@ -20,7 +20,6 @@ RSpec.describe 'Memos', type: :system do
       it '他ユーザーのメモは表示されないこと' do
         other_user = create(:user, email: 'otheruser@test.com')
         create(:memo, name: '他ユーザーのメモ', user: other_user)
-
         visit root_path
         expect(page).to have_no_content '他ユーザーのメモ'
       end
@@ -37,7 +36,6 @@ RSpec.describe 'Memos', type: :system do
   describe '内容表示' do
     it 'メモの内容を表示できること' do
       create(:memo, content: 'ど忘れしやすい名前です', user:)
-
       visit root_path
       comment_icon = find '.fa-comment-dots'
       comment_icon.click
@@ -103,7 +101,6 @@ RSpec.describe 'Memos', type: :system do
   describe '編集' do
     it 'メモを編集できること' do
       create(:memo, name: 'ど忘れしやすい名前', user:)
-
       visit root_path
       slider = find '.swiper-wrapper'
       swipe(-85.5, slider)
@@ -120,7 +117,6 @@ RSpec.describe 'Memos', type: :system do
   describe '削除' do
     it 'メモを削除できること' do
       create(:memo, name: 'ど忘れしやすい名前', user:)
-
       visit root_path
       expect(page).to have_content 'ど忘れしやすい名前'
       slider = find '.swiper-wrapper'
