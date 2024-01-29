@@ -171,9 +171,9 @@ RSpec.describe 'Memos', type: :system do
 
     context '検索ワードを削除した場合' do
       it '全てのメモが表示されること' do
-        fill_in 'q', with: 'タグ1 タグ2'
+        fill_in 'q', with: 'タグ3'
         find 'turbo-frame[complete]'
-        expect(page).to have_content 'ど忘れしやすい名前'
+        expect(page).to have_no_content 'ど忘れしやすい名前'
         expect(page).to have_no_content '覚えておきたい名前'
         find('input[name="q"]').send_keys([:backspace] * 7)
         find 'turbo-frame[complete]'
