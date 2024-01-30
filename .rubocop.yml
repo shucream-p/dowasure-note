@@ -26,5 +26,5 @@ Metrics/BlockLength:
 Metrics/AbcSize:
   Max: 30
 
-ClassAndModuleChildren:
-  EnforcedStyle: compact
+Style/ClassAndModuleChildren:
+  Enabled: false
