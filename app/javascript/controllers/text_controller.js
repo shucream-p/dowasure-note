@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["container"];
 
-  toggle() {
+  toggleTruncate() {
     const container = this.containerTarget;
 
     if (

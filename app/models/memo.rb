@@ -12,8 +12,8 @@ class Memo < ApplicationRecord
   scope :forgetful, -> { order(search_count: :desc, updated_at: :desc) }
 
   class << self
-    def search(query, option)
-      case option
+    def search(query, target)
+      case target
       when 'name'
         where('name LIKE ?', "%#{query}%")
       when 'tag'

@@ -5,7 +5,7 @@ class MemosController < ApplicationController
 
   def index
     memos = current_user.memos
-    @memos = params[:latest] ? memos.latest.page(params[:page]) : memos.forgetful.page(params[:page])
+    @memos = (params[:latest] ? memos.latest : memos.forgetful).page(params[:page])
   end
 
   def show; end

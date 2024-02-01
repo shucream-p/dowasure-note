@@ -17,8 +17,8 @@ export default class extends Controller {
 
     tagify.on("input", onInput);
 
-    function onInput(e) {
-      const value = e.detail.value;
+    function onInput(event) {
+      const value = event.detail.value;
       tagify.whitelist = null;
 
       controller && controller.abort();
