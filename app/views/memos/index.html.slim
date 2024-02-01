@@ -17,10 +17,10 @@
                        placeholder: '検索ワード',
                        data: { controller: 'sort-link', action: 'input->sort-link#toggleHidden' }
         .block.mt-2
-          = f.radio_button :search_option, :tag, checked: true, class: 'accent-indigo-500'
-          = f.label :search_option_tag, 'キーワードタグ', class: 'ml-1'
-          = f.radio_button :search_option, :name, class: 'accent-indigo-500 ml-4'
-          = f.label :search_option_name, '名前', class: 'ml-1'
+          = f.radio_button :target, :tag, checked: true, class: 'accent-indigo-500'
+          = f.label :target_tag, 'キーワードタグ', class: 'ml-1'
+          = f.radio_button :target, :name, class: 'accent-indigo-500 ml-4'
+          = f.label :target_name, '名前', class: 'ml-1'
 
       .fixed.bottom-12.right-4.sm:right-24.z-10
         = button_to '+',
