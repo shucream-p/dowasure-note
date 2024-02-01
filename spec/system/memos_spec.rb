@@ -139,7 +139,7 @@ RSpec.describe 'Memos', type: :system do
     context 'キーワードタグで検索した場合' do
       it '入力したキーワードタグを持つメモのみ表示されること' do
         expect(page).to have_checked_field('キーワードタグ')
-        fill_in 'q', with: 'タグ1 タグ2'
+        fill_in 'query', with: 'タグ1 タグ2'
         find 'turbo-frame[complete]'
         expect(page).to have_content 'ど忘れしやすい名前'
         expect(page).to have_no_content '覚えておきたい名前'
@@ -149,7 +149,7 @@ RSpec.describe 'Memos', type: :system do
     context '名前で検索した場合' do
       it '入力したワードを名前に含むメモのみ表示されること' do
         choose '名前'
-        fill_in 'q', with: '覚えて'
+        fill_in 'query', with: '覚えて'
         find 'turbo-frame[complete]'
         expect(page).to have_content '覚えておきたい名前'
         expect(page).to have_no_content 'ど忘れしやすい名前'
@@ -158,11 +158,11 @@ RSpec.describe 'Memos', type: :system do
 
     context '検索ワードを削除した場合' do
       it '全てのメモが表示されること' do
-        fill_in 'q', with: 'タグ3'
+        fill_in 'query', with: 'タグ3'
         find 'turbo-frame[complete]'
         expect(page).to have_no_content 'ど忘れしやすい名前'
         expect(page).to have_no_content '覚えておきたい名前'
-        find('input[name="q"]').send_keys([:backspace] * 7)
+        find('input[name="query"]').send_keys([:backspace] * 7)
         find 'turbo-frame[complete]'
         expect(page).to have_content 'ど忘れしやすい名前'
         expect(page).to have_content '覚えておきたい名前'
@@ -171,7 +171,7 @@ RSpec.describe 'Memos', type: :system do
 
     context '検索結果なしの場合' do
       it '「見つかりませんでした。」と表示されること' do
-        fill_in 'q', with: 'タグ3'
+        fill_in 'query', with: 'タグ3'
         expect(page).to have_content '見つかりませんでした。'
       end
     end
@@ -187,7 +187,7 @@ RSpec.describe 'Memos', type: :system do
     it '検索した後順番が入れ替わること' do
       expect(first('#name').text).to eq 'ど忘れしやすい名前'
       choose '名前'
-      fill_in 'q', with: '覚えて'
+      fill_in 'query', with: '覚えて'
       find 'turbo-frame[complete]'
       visit root_path
       expect(first('#name').text).to eq '覚えておきたい名前'

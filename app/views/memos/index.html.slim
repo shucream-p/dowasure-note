@@ -10,7 +10,7 @@
                   method: :get,
                   class: 'mt-6',
                   data: { turbo_frame: 'memos', controller: 'search-form', action: 'input->search-form#submit' } do |f|
-        = f.text_field :q,
+        = f.text_field :query,
                        class: 'px-2 py-1',
                        placeholder: '検索ワード',
                        data: { controller: 'sort-link', action: 'input->sort-link#toggleHidden' }

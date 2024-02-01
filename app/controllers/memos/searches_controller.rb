@@ -3,8 +3,8 @@
 class Memos::SearchesController < ApplicationController
   def index
     memos = current_user.memos
-    @memos = if params[:q].present?
-               memos.search(params[:q], params[:search_option])
+    @memos = if params[:query].present?
+               memos.search(params[:query], params[:search_option])
                     .forgetful
                     .page(params[:page])
              else
@@ -12,6 +12,6 @@ class Memos::SearchesController < ApplicationController
                     .page(params[:page])
              end
 
-    @memos.each(&:increase_search_count) if params[:q].present?
+    @memos.each(&:increase_search_count) if params[:query].present?
   end
 end
