@@ -1,4 +1,4 @@
 = turbo_stream.remove @memo
-= turbo_stream.update 'flash', partial: 'layouts/flash'
+= turbo_stream.update 'flash', partial: 'flash'
 - if @count.zero?
   = turbo_stream.update 'main', partial: 'no_registered'

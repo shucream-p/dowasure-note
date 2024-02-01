@@ -12,8 +12,8 @@ html
     = favicon_link_tag 'android-touch-icon.png', rel: 'android-touch-icon', sizes: '192x192', type: 'image/png'
   body.bg-neutral-50.flex.flex-col.min-h-screen.text-custom-black
     - if user_signed_in? || current_page?(terms_path) || current_page?(privacy_path)
-      = render 'layouts/header'
+      = render 'header'
     .flex-grow
       = yield
     - if !user_signed_in? || !current_page?(root_path)
-      = render 'layouts/footer'
+      = render 'footer'
