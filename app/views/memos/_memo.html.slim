@@ -8,7 +8,7 @@
               = memo.name
             - if memo.content.present?
               = link_to memo, data: { turbo_frame: 'memo_content' }, class: 'ml-2'
-                i.fa-regular.fa-comment-dots
+                i.fa-regular.fa-comment-dots.fa-xs.text-gray-400
           .swiper-slide.second
             = link_to edit_memo_path(memo), data: { turbo: 'false' }
               i.fa-regular.fa-pen-to-square.fa-lg.p-3.text-white.bg-yellow-500
