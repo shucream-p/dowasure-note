@@ -4,7 +4,7 @@
       .swiper data-swiper-target="container"
         .swiper-wrapper
           .swiper-slide.p-2.truncate data-controller="text" data-text-target="container"
-            span#name.font-bold.text-lg data-action="click->text#toggleTruncate"
+            span#name data-action="click->text#toggleTruncate"
               = memo.name
             - if memo.content.present?
               = link_to memo, data: { turbo_frame: 'memo_content' }, class: 'ml-2'
