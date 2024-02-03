@@ -28,17 +28,17 @@
                     method: :get,
                     class: 'w-12 h-12 bg-indigo-500 text-lg text-white font-semibold rounded-full shadow'
 
-      .my-6
-        #js-sort-link.mb-3 data-controller="sort-link"
+      .my-10
+        #js-sort-link.mb-8.text-center data-controller="sort-link"
           = link_to 'ど忘れが多い順',
                     memos_path,
-                    class: 'border-r border-black pr-2 mr-2',
+                    class: 'p-3 text-white bg-indigo-500 border border-indigo-500 rounded-l-md',
                     data: { turbo_frame: 'memos',
                             action: 'click->sort-link#toggleTextColor',
                             sort_link_target: 'forgetful' }
           = link_to '更新順',
                     memos_path(latest: true),
-                    class: 'text-gray-400',
+                    class: 'px-11 py-3 text-gray-400 border border-indigo-500 rounded-r-md',
                     data: { turbo_frame: 'memos',
                             action: 'click->sort-link#toggleTextColor',
                             sort_link_target: 'latest' }

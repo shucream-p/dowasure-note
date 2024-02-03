@@ -15,11 +15,13 @@ export default class extends Controller {
   }
 
   toggleTextColor(event) {
-    const gray = "text-gray-400";
+    const classNames = ["text-gray-400", "text-white", "bg-indigo-500"];
 
-    if (event.currentTarget.classList.contains(gray)) {
-      this.forgetfulTarget.classList.toggle(gray);
-      this.latestTarget.classList.toggle(gray);
+    if (event.currentTarget.classList.contains("text-gray-400")) {
+      classNames.forEach((className) => {
+        this.forgetfulTarget.classList.toggle(className);
+        this.latestTarget.classList.toggle(className);
+      });
     }
   }
 }
