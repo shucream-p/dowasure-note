@@ -32,13 +32,13 @@
         #js-sort-link.mb-8.text-center data-controller="sort-link"
           = link_to 'ど忘れが多い順',
                     memos_path,
-                    class: 'p-3 text-white bg-indigo-500 border border-indigo-500 rounded-l-md',
+                    class: 'p-3 text-white bg-indigo-500 border border-indigo-500 rounded-l-md hover:opacity-100',
                     data: { turbo_frame: 'memos',
                             action: 'click->sort-link#toggleTextColor',
                             sort_link_target: 'forgetful' }
           = link_to '更新順',
                     memos_path(latest: true),
-                    class: 'px-11 py-3 text-gray-400 border border-indigo-500 rounded-r-md',
+                    class: 'px-11 py-3 text-gray-400 border border-indigo-500 rounded-r-md hover:opacity-100',
                     data: { turbo_frame: 'memos',
                             action: 'click->sort-link#toggleTextColor',
                             sort_link_target: 'latest' }
