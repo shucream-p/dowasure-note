@@ -1,5 +1,5 @@
 = turbo_frame_tag memo do
-  .bg-white.shadow.rounded-md.mb-2
+  .border-b
     div data-controller="swiper"
       .swiper data-swiper-target="container"
         .swiper-wrapper
@@ -11,6 +11,6 @@
                 i.fa-regular.fa-comment-dots.fa-xs.text-gray-400
           .swiper-slide.second
             = link_to edit_memo_path(memo), data: { turbo: 'false' }
-              i.fa-regular.fa-pen-to-square.fa-lg.p-3.text-white.bg-yellow-500
+              i.fa-regular.fa-pen-to-square.p-3.text-white.bg-yellow-500
             = link_to memo, data: { turbo_method: :delete, turbo_confirm: '本当に削除してよろしいですか？' }
-              i.fa-regular.fa-trash-can.fa-lg.p-3.text-white.bg-red-500.rounded-r-md
+              i.fa-regular.fa-trash-can.p-3.text-white.bg-red-500

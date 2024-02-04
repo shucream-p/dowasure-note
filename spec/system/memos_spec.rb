@@ -62,7 +62,7 @@ RSpec.describe 'Memos', type: :system do
       expect(page).to have_content 'メモが作成されました'
       expect(page).to have_content 'ど忘れしやすい名前'
       slider = find '.swiper-wrapper'
-      swipe(-85.5, slider)
+      swipe(-78, slider)
       edit_icon = find '.fa-pen-to-square'
       edit_icon.click
       expect(page).to have_content 'タグ1'
@@ -103,7 +103,7 @@ RSpec.describe 'Memos', type: :system do
       create(:memo, name: 'ど忘れしやすい名前', user:)
       visit root_path
       slider = find '.swiper-wrapper'
-      swipe(-85.5, slider)
+      swipe(-78, slider)
       edit_icon = find '.fa-pen-to-square'
       edit_icon.click
       expect(page).to have_field 'memo[name]', with: 'ど忘れしやすい名前'
@@ -120,7 +120,7 @@ RSpec.describe 'Memos', type: :system do
       visit root_path
       expect(page).to have_content 'ど忘れしやすい名前'
       slider = find '.swiper-wrapper'
-      swipe(-85.5, slider)
+      swipe(-78, slider)
       delete_icon = find '.fa-trash-can'
       delete_icon.click
       expect(page.accept_confirm).to eq '本当に削除してよろしいですか？'
