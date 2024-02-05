@@ -11,16 +11,16 @@ https://dowasure-note.com/
 ## 使い方
 ### 1. メールアドレスでアカウント登録する。
 
-<img width="30%" alt="メモ登録" src="https://github.com/shucream-p/dowasure-note/assets/88083085/2158e732-aa6a-448c-8c22-54e426bc4bac">
+<img width="30%" alt="メモ登録" src="https://github.com/shucream-p/dowasure-note/assets/88083085/50029cc6-81a2-4fee-9dcd-cf99edcaa0bd">
 
 ### 2. メモを新規登録する  
 キーワードタグ欄には、その名前を思い出そうとする際に出てくる関連ワードを入力してください。  
 
-<img width="30%" alt="メモ登録" src="https://github.com/shucream-p/dowasure-note/assets/88083085/b3e9d587-bc70-441e-b627-21940e87b039">
+<img width="30%" alt="メモ登録" src="https://github.com/shucream-p/dowasure-note/assets/88083085/4e89842d-9c2d-4655-b970-550791ffb1ff">
 
 ### 3. キーワードタグを入力して名前を検索する
 
-<img width="30%" alt="メモ検索" src="https://github.com/shucream-p/dowasure-note/assets/88083085/a64d717c-d2b5-474f-bfe2-28b9fb39f592">
+<img width="30%" alt="メモ検索" src="https://github.com/shucream-p/dowasure-note/assets/88083085/3109dc7c-da57-401b-8b41-44da621cd5c7">
 
 ※名前であいまい検索も可能です。
 
