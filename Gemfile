@@ -62,6 +62,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'dockerfile-rails', '>= 1.6'
   gem 'i18n_generators'
   gem 'letter_opener_web'
   gem 'rubocop', require: false
@@ -89,5 +90,3 @@ gem 'devise-i18n'
 gem 'kaminari'
 gem 'meta-tags'
 gem 'slim-rails'
-
-gem 'dockerfile-rails', '>= 1.6', group: :development

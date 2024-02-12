@@ -18,7 +18,7 @@ RSpec.describe 'Memos', type: :system do
       end
 
       it '他ユーザーのメモは表示されないこと' do
-        other_user = create(:user, email: 'otheruser@test.com')
+        other_user = create(:user, email: 'otheruser@example.com')
         create(:memo, name: '他ユーザーのメモ', user: other_user)
         visit root_path
         expect(page).to have_no_content '他ユーザーのメモ'
@@ -88,7 +88,7 @@ RSpec.describe 'Memos', type: :system do
       end
 
       it '他ユーザーの登録しているキーワードタグは表示されないこと' do
-        other_user = create(:user, email: 'otheruser@test.com')
+        other_user = create(:user, email: 'otheruser@example.com')
         create(:memo, tag_list: ['他ユーザーのタグ'], user: other_user)
         visit new_memo_path
         tag_input = find '.tagify__input'
