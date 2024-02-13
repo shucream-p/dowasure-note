@@ -32,3 +32,14 @@ textarea:focus {
   outline-color: #6366f1;
   border: none;
 }
+
+.button-position {
+  right: 16px;
+  bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .button-position {
+    right: calc(50% - 205px);
+  }
+}
