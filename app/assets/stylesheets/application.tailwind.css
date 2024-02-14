@@ -38,7 +38,7 @@ textarea:focus {
   bottom: 48px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 449px) {
   .button-position {
     right: calc(50% - 205px);
   }
