@@ -15,7 +15,7 @@ class Memo < ApplicationRecord
     def search(query, target)
       case target
       when 'name'
-        where('name LIKE ?', "%#{query}%")
+        where('name LIKE ?', "%#{ActiveRecord::Base.sanitize_sql_like(query)}%")
       when 'tag'
         tag_search(query)
       end
